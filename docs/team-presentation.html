@@ -1,0 +1,1666 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>iAmasters OS · Presentación para el equipo</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0d1117;
+  --bg-card: #161b22;
+  --bg-elevated: #21262d;
+  --border: #30363d;
+  --border-soft: #21262d;
+  --text: #c9d1d9;
+  --text-muted: #8b949e;
+  --text-bright: #f0f6fc;
+  --accent: #ff8c42;
+  --accent-soft: rgba(255, 140, 66, 0.1);
+  --purple: #b794f4;
+  --purple-soft: rgba(183, 148, 244, 0.1);
+  --green: #3fb950;
+  --yellow: #d29922;
+  --red: #f85149;
+  --blue: #58a6ff;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", system-ui, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+header {
+  background: linear-gradient(180deg, #1a1f2e 0%, var(--bg) 100%);
+  border-bottom: 1px solid var(--border);
+  padding: 60px 0 40px;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  padding: 4px 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-size: 42px;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  font-size: 18px;
+  color: var(--text-muted);
+  max-width: 700px;
+  margin-bottom: 24px;
+}
+
+.meta {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 600;
+}
+.badge-version { background: var(--purple-soft); color: var(--purple); border: 1px solid rgba(183,148,244,0.3); }
+.badge-status { background: rgba(63,185,80,0.1); color: var(--green); border: 1px solid rgba(63,185,80,0.3); }
+
+main { padding: 48px 0 80px; }
+
+section { margin-bottom: 64px; }
+
+h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--text-bright);
+  letter-spacing: -0.3px;
+  margin-bottom: 12px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+h2 .count {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-left: 8px;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 24px 0 8px;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-bright);
+  margin: 16px 0 6px;
+}
+
+p { margin-bottom: 12px; }
+p:last-child { margin-bottom: 0; }
+
+.lead {
+  font-size: 17px;
+  color: var(--text);
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+ul, ol { margin: 8px 0 12px; padding-left: 24px; }
+li { margin-bottom: 4px; }
+li::marker { color: var(--accent); }
+
+a { color: var(--accent); text-decoration: none; border-bottom: 1px dotted var(--accent); }
+a:hover { color: var(--text-bright); border-bottom-style: solid; }
+
+code {
+  font-family: "SF Mono", "Monaco", "Menlo", "Cascadia Code", monospace;
+  font-size: 0.88em;
+  background: var(--bg-elevated);
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: var(--purple);
+  border: 1px solid var(--border-soft);
+}
+
+pre {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+  overflow-x: auto;
+  margin: 12px 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+pre code {
+  background: none;
+  padding: 0;
+  border: none;
+  color: var(--text);
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 12px 0;
+}
+
+.card-accent { border-left: 3px solid var(--accent); }
+.card-purple { border-left: 3px solid var(--purple); }
+.card-green { border-left: 3px solid var(--green); }
+.card-yellow { border-left: 3px solid var(--yellow); }
+.card-red { border-left: 3px solid var(--red); }
+.card-blue { border-left: 3px solid var(--blue); }
+
+.grid {
+  display: grid;
+  gap: 12px;
+  margin: 16px 0;
+}
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+.skill-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px 20px;
+}
+
+.skill-card h4 {
+  margin-top: 0;
+  font-family: "SF Mono", monospace;
+  font-size: 14px;
+  color: var(--accent);
+}
+
+.skill-card .desc {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 6px 0;
+}
+
+.skill-card .meta-line {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  font-size: 11px;
+}
+
+.tag {
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  padding: 2px 8px;
+  border-radius: 10px;
+  border: 1px solid var(--border-soft);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+th {
+  text-align: left;
+  padding: 10px 14px;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  color: var(--text-bright);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border-soft);
+  color: var(--text);
+}
+
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: rgba(255,255,255,0.02); }
+
+details {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 20px;
+  margin: 12px 0;
+  cursor: pointer;
+}
+
+details[open] { padding-bottom: 20px; }
+
+summary {
+  font-weight: 600;
+  color: var(--text-bright);
+  font-size: 15px;
+  list-style: none;
+  position: relative;
+  padding-left: 22px;
+  cursor: pointer;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  top: 1px;
+  color: var(--accent);
+  font-size: 10px;
+  transition: transform 0.15s;
+}
+
+details[open] summary::before { transform: rotate(90deg); }
+
+details > *:not(summary) {
+  margin-top: 14px;
+  cursor: default;
+}
+
+.timeline {
+  position: relative;
+  padding-left: 24px;
+  margin: 24px 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  bottom: 6px;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 24px;
+  padding-bottom: 4px;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -22px;
+  top: 6px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  box-shadow: 0 0 0 2px var(--accent);
+}
+
+.timeline-item h3 {
+  margin-top: 0;
+  display: flex;
+  gap: 8px;
+  align-items: baseline;
+  font-family: "SF Mono", monospace;
+  font-size: 15px;
+}
+
+.timeline-item .commit {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-family: "SF Mono", monospace;
+}
+
+.tree {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 18px 24px;
+  font-family: "SF Mono", monospace;
+  font-size: 12.5px;
+  line-height: 1.65;
+  color: var(--text);
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.tree .dir { color: var(--accent); font-weight: 600; }
+.tree .file { color: var(--text); }
+.tree .comment { color: var(--text-muted); font-style: italic; }
+.tree .new { color: var(--green); font-weight: 600; }
+.tree .vendor { color: var(--purple); }
+
+.highlight-box {
+  background: linear-gradient(135deg, rgba(255,140,66,0.08), rgba(183,148,244,0.08));
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin: 20px 0;
+}
+
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.kpi {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.kpi-value {
+  font-size: 28px;
+  font-weight: 700;
+  color: var(--accent);
+  font-family: "SF Mono", monospace;
+}
+
+.kpi-label {
+  font-size: 11px;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-top: 4px;
+}
+
+.toc {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 24px;
+  margin: 24px 0 40px;
+}
+
+.toc h3 {
+  margin-top: 0;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  border: none;
+  padding: 0;
+  margin-bottom: 12px;
+}
+
+.toc ol {
+  columns: 2;
+  column-gap: 24px;
+  padding-left: 0;
+  list-style-position: inside;
+  font-size: 14px;
+}
+
+.toc li { margin-bottom: 6px; }
+.toc a { border: none; }
+.toc a:hover { color: var(--accent); }
+
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+  margin-top: 40px;
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 13px;
+}
+
+footer a { color: var(--accent); }
+
+.callout {
+  background: var(--purple-soft);
+  border-left: 3px solid var(--purple);
+  border-radius: 4px;
+  padding: 14px 18px;
+  margin: 16px 0;
+  font-size: 14px;
+}
+
+.callout strong { color: var(--purple); }
+
+.callout-warn { background: rgba(210,153,34,0.08); border-color: var(--yellow); }
+.callout-warn strong { color: var(--yellow); }
+
+.layer-diagram {
+  display: grid;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.layer {
+  padding: 18px 24px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  position: relative;
+}
+
+.layer-1 { background: linear-gradient(90deg, rgba(255,140,66,0.08), transparent); border-left: 4px solid var(--accent); }
+.layer-2 { background: linear-gradient(90deg, rgba(183,148,244,0.08), transparent); border-left: 4px solid var(--purple); margin-left: 24px; }
+.layer-3 { background: linear-gradient(90deg, rgba(63,185,80,0.08), transparent); border-left: 4px solid var(--green); margin-left: 48px; }
+
+.layer h4 {
+  margin-top: 0;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+.layer .layer-meta {
+  font-size: 12px;
+  color: var(--text-muted);
+  font-family: "SF Mono", monospace;
+}
+
+.flow-step {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.flow-step:last-child { border-bottom: none; }
+
+.flow-num {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent-soft);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-family: "SF Mono", monospace;
+}
+
+.flow-content { flex: 1; }
+.flow-content h4 { margin-top: 0; }
+.flow-content code { font-size: 12px; }
+
+@media (max-width: 600px) {
+  .container { padding: 0 16px; }
+  h1 { font-size: 32px; }
+  h2 { font-size: 24px; }
+  .toc ol { columns: 1; }
+  .layer-2 { margin-left: 12px; }
+  .layer-3 { margin-left: 24px; }
+}
+
+@media print {
+  body { background: white; color: black; }
+  .card, .skill-card, details, .tree, .kpi { background: #f5f5f5; border-color: #ccc; }
+  details[open] > * { display: block !important; }
+  details::before { display: none; }
+  pre { background: #f0f0f0; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <span class="eyebrow">Documentación interna · Equipo iAmasters</span>
+    <h1>iAmasters OS</h1>
+    <p class="subtitle">Sistema operativo agéntico para operadores de IA. Sinapsis (engine de memoria) + capa OS (brand context, agent context, skills curadas, multi-cliente). Construido en castellano, neutro y reutilizable.</p>
+    <div class="meta">
+      <div class="meta-item"><span class="badge badge-version">v0.4.0</span></div>
+      <div class="meta-item"><span class="badge badge-status">Privado · Listo para validación</span></div>
+      <div class="meta-item">📅 Construido el 2026-05-07</div>
+      <div class="meta-item">📁 <a href="https://github.com/angelapaia/iamasters-os">github.com/angelapaia/iamasters-os</a></div>
+      <div class="meta-item">📦 2.1 MB · 146 archivos</div>
+    </div>
+  </div>
+</header>
+
+<main>
+<div class="container">
+
+<div class="kpi-row">
+  <div class="kpi"><div class="kpi-value">12</div><div class="kpi-label">Skills</div></div>
+  <div class="kpi"><div class="kpi-value">5</div><div class="kpi-label">Commands</div></div>
+  <div class="kpi"><div class="kpi-value">4</div><div class="kpi-label">Templates</div></div>
+  <div class="kpi"><div class="kpi-value">4</div><div class="kpi-label">Scripts</div></div>
+  <div class="kpi"><div class="kpi-value">5</div><div class="kpi-label">Docs</div></div>
+  <div class="kpi"><div class="kpi-value">4</div><div class="kpi-label">Versiones</div></div>
+</div>
+
+<div class="toc">
+  <h3>Índice</h3>
+  <ol>
+    <li><a href="#contexto">Contexto: por qué se construyó</a></li>
+    <li><a href="#vision">Qué es iAmasters OS</a></li>
+    <li><a href="#problema">El problema y la solución</a></li>
+    <li><a href="#arquitectura">Arquitectura: 3 capas</a></li>
+    <li><a href="#estructura">Estructura del repo</a></li>
+    <li><a href="#instalacion">Cómo se instala</a></li>
+    <li><a href="#primer-uso">Primer uso paso a paso</a></li>
+    <li><a href="#versiones">Las 4 versiones (v0.1 → v0.4)</a></li>
+    <li><a href="#skills">Las 12 skills al detalle</a></li>
+    <li><a href="#commands">Los 5 commands</a></li>
+    <li><a href="#templates">Los 4 templates verticales</a></li>
+    <li><a href="#scripts">Los 4 scripts</a></li>
+    <li><a href="#docs">Los 5 docs</a></li>
+    <li><a href="#multicliente">Flujo multi-cliente</a></li>
+    <li><a href="#decisiones">Decisiones técnicas clave</a></li>
+    <li><a href="#roadmap">Roadmap y siguientes pasos</a></li>
+    <li><a href="#para-equipo">Qué se espera del equipo</a></li>
+  </ol>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="contexto">
+<h2>1. Contexto: por qué se construyó</h2>
+
+<p class="lead">Durante el análisis competitivo de <strong>Agentic Academy (Scrapes / Juanpe Navarro)</strong>, detectamos un gap: ellos distribuyen un sistema operativo agéntico empaquetado llamado "Agentic OS" — un repo Claude Code listo para clonar e instalar, con skills curadas, brand context, multi-cliente y memoria que aprende.</p>
+
+<p>iAmasters NO tiene equivalente. <strong>Synapsis</strong> (el sistema de memoria de Luis Pitik) cubre la capa de aprendizaje, pero no la arquitectura completa: faltan brand context compartido, multi-cliente, skills curadas con colaboración, niveles de proyecto formalizados, etc.</p>
+
+<div class="highlight-box">
+  <h4 style="margin-top:0">Decisión estratégica de Angel</h4>
+  <p>Construir <strong>iAmasters OS</strong> como respuesta a Scrapes, pero con tres ventajas claras:</p>
+  <ul>
+    <li>En <strong>castellano</strong> (Scrapes solo inglés)</li>
+    <li>Con <strong>Synapsis embebido</strong> (su <code>learnings.md</code> es muy básico al lado)</li>
+    <li>Como <strong>repo público y neutro</strong> — sin info privada de Angel ni de la academia. Cualquier operador IA puede clonarlo, instalarlo y usarlo</li>
+  </ul>
+  <p style="margin-top:12px">Resultado: en una sola sesión se construyeron las versiones v0.1.0 → v0.4.0, con esqueleto + 12 skills + 4 templates verticales + scripts de gestión + docs operativos completos.</p>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="vision">
+<h2>2. Qué es iAmasters OS</h2>
+
+<p class="lead">Un repositorio Claude Code listo para clonar e instalar que convierte una sesión vanilla de Claude Code en un sistema operativo profesional para operadores de IA.</p>
+
+<h3>Para quién</h3>
+<div class="grid grid-2">
+  <div class="card card-accent">
+    <h4>Operador IA freelance</h4>
+    <p>Sirve a varios clientes desde su laptop. Quiere estandarizar entregables y profesionalizar sin crear estructura corporate.</p>
+  </div>
+  <div class="card card-accent">
+    <h4>Empresario / pyme</h4>
+    <p>Automatiza su negocio con Claude Code. Quiere memoria que persista entre sesiones y skills que aprendan de su contexto.</p>
+  </div>
+  <div class="card card-accent">
+    <h4>Agencia pequeña (2-10)</h4>
+    <p>Quiere estandarizar el stack agéntico del equipo. Multi-cliente con voice y outputs separados por marca.</p>
+  </div>
+  <div class="card card-accent">
+    <h4>Formador / educador</h4>
+    <p>Enseña Claude Code y necesita un repo de referencia que sus alumnos puedan clonar y usar inmediatamente.</p>
+  </div>
+</div>
+
+<h3>Lo que da el primer día</h3>
+<ul>
+  <li><strong>Memoria que persiste</strong> entre sesiones — no más "explícame tu stack otra vez"</li>
+  <li><strong>12+ skills curadas</strong> instaladas, ya con tu marca dentro</li>
+  <li><strong>Brand context</strong> (voz, posicionamiento, ICP) auto-generado en 30 minutos</li>
+  <li><strong>Multi-cliente</strong> listo para escalar (4 templates de vertical incluidos)</li>
+  <li><strong>Sistema de aprendizaje continuo</strong>: lo que repites se gradúa a regla automática</li>
+  <li><strong>Dashboard visual</strong> con métricas reales de uso del operador (heredado de Sinapsis)</li>
+</ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="problema">
+<h2>3. El problema y la solución</h2>
+
+<table>
+  <thead>
+    <tr><th>Sin OS (Claude Code vanilla)</th><th>Con iAmasters OS</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Cada sesión empieza explicando tu stack y preferencias</td>
+      <td>Sinapsis recuerda y carga skills relevantes (~2.800 tokens vs ~25.000)</td>
+    </tr>
+    <tr>
+      <td>Skills sueltas sin curar (1.000+ disponibles online)</td>
+      <td>12 skills validadas para tu avatar + lista curada de externas recomendadas</td>
+    </tr>
+    <tr>
+      <td>Brand voice cada vez que escribes</td>
+      <td>Voice profile permanente con 3 registros A/B/C (formal/divulgativo/cercano)</td>
+    </tr>
+    <tr>
+      <td>Outputs sin gate de calidad → AI slop</td>
+      <td><code>tool-output-verifier</code> antes de entregar (humanizer + brand voice + length + factuality)</td>
+    </tr>
+    <tr>
+      <td>1 cliente o se mezcla todo en un mismo workspace</td>
+      <td>Multi-cliente con templates por vertical y separación de info</td>
+    </tr>
+    <tr>
+      <td>Sin aprendizaje sesión a sesión</td>
+      <td>Lo que repites 3+ sesiones → regla automática (Sinapsis instincts)</td>
+    </tr>
+    <tr>
+      <td>Cada miembro del equipo monta su propio sistema</td>
+      <td>Estándar compartido del equipo: clona repo, instala, listo</td>
+    </tr>
+  </tbody>
+</table>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="arquitectura">
+<h2>4. Arquitectura: 3 capas</h2>
+
+<p>iAmasters OS combina tres capas distintas que trabajan juntas pero pueden mantenerse independientes:</p>
+
+<div class="layer-diagram">
+  <div class="layer layer-1">
+    <h4>Capa 1 · Sinapsis v4.5 (engine de memoria)</h4>
+    <p class="layer-meta">vendor/sinapsis/ · vendored intacto · instalado en ~/.claude/</p>
+    <p>El engine que hace que Claude Code aprenda de ti. Operator state global, instincts auto-aprendidos, skills on-demand, dashboard, dream cycle. Trasplantado íntegro del <a href="https://github.com/Luispitik/sinapsis">repo de Luis Pitik</a> sin modificar (preservamos los 112 tests upstream).</p>
+  </div>
+
+  <div class="layer layer-2">
+    <h4>Capa 2 · OS (estructura del repo)</h4>
+    <p class="layer-meta">brand-context/ · context/ · projects/ · clients/</p>
+    <p>La estructura que añadimos encima de Sinapsis: brand context (voice, positioning, ICP), agent context (soul, user, learnings), proyectos estructurados, multi-cliente con templates por vertical.</p>
+  </div>
+
+  <div class="layer layer-3">
+    <h4>Capa 3 · Skills curadas + commands + scripts</h4>
+    <p class="layer-meta">.claude/skills/ · .claude/commands/ · scripts/</p>
+    <p>12 skills validadas en categorías marketing, operations, strategy, tools, visualization, _meta. 5 slash commands del OS. 4 scripts de gestión (install, add-client, update con conflict resolution, validate-skill).</p>
+  </div>
+</div>
+
+<div class="callout">
+  <strong>Decisión clave: vendoring intacto.</strong> Sinapsis se mantiene tal cual lo publica Luis. Nosotros no modificamos sus paths ni sus scripts. Cuando Luis publique nueva versión upstream, hacemos <code>git pull</code> en <code>vendor/sinapsis/</code> y seguimos funcionando. Cero riesgo de romper sus 112 tests.
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="estructura">
+<h2>5. Estructura completa del repo</h2>
+
+<details open>
+<summary>Árbol completo (click para colapsar)</summary>
+
+<div class="tree"><span class="dir">iamasters-os/</span>
+├── README.md                              <span class="comment"># Visión general + instalación rápida</span>
+├── CLAUDE.md                              <span class="comment"># Núcleo: instrucciones para Claude (paths, ritual, registry)</span>
+├── AGENTS.md                              <span class="comment"># Cross-tool compat (Codex, Cursor)</span>
+├── LICENSE                                <span class="comment"># MIT</span>
+├── CHANGELOG.md                           <span class="comment"># Versionado v0.1.0 → v0.4.0</span>
+├── SECURITY.md                            <span class="comment"># Heredado de Sinapsis</span>
+├── .gitignore                             <span class="comment"># Excluye .env, brand-context privado, projects, clients</span>
+├── .env.example                           <span class="comment"># Plantilla variables entorno (Firecrawl, etc.)</span>
+│
+├── <span class="dir">.claude/</span>
+│   ├── settings.json                      <span class="comment"># Permisos seguros + hook local skill-change-detector</span>
+│   ├── <span class="dir">commands/</span>                          <span class="comment"># 5 slash commands del OS</span>
+│   │   ├── start-here.md
+│   │   ├── wrap-up.md
+│   │   ├── add-client.md
+│   │   ├── install-skill.md               <span class="new"># Marketplace local con validación</span>
+│   │   └── install-mcp.md                 <span class="new"># MCPs curados</span>
+│   ├── <span class="dir">hooks/</span>                              <span class="comment"># Vacío en v0.4 (placeholder)</span>
+│   └── <span class="dir">skills/</span>                             <span class="comment"># 12 skills + Sinapsis core trasplantado</span>
+│       ├── <span class="dir">_meta/</span>                          <span class="comment"># 4 meta-skills canónicas</span>
+│       │   ├── meta-skill-creator/        <span class="comment"># Define el patrón de TODAS las demás skills</span>
+│       │   │   ├── SKILL.md
+│       │   │   └── references/
+│       │   │       ├── skill-template.md
+│       │   │       └── examples.md
+│       │   ├── meta-onboarding-wizard/    <span class="comment"># 7 preguntas → configuración inicial</span>
+│       │   ├── meta-start-here/           <span class="comment"># Ritual inicio sesión</span>
+│       │   └── meta-wrap-up/              <span class="comment"># Cierre + daily summary + commit</span>
+│       ├── <span class="dir">marketing/</span>                      <span class="comment"># 5 skills marketing</span>
+│       │   ├── marketing-brand-voice/     <span class="comment"># Voice profile + 3 registros A/B/C</span>
+│       │   ├── marketing-positioning/
+│       │   ├── marketing-icp/
+│       │   ├── marketing-copywriting/     <span class="comment"># Generador con gate obligatorio</span>
+│       │   └── marketing-content-repurposing/
+│       ├── <span class="dir">operations/</span>                     <span class="comment"># Vacío en v0.4 (categoría preparada)</span>
+│       ├── <span class="dir">strategy/</span>                       <span class="comment"># Vacío en v0.4 (categoría preparada)</span>
+│       ├── <span class="dir">tools/</span>                          <span class="comment"># 3 tools primitivas</span>
+│       │   ├── tool-humanizer/            <span class="comment"># 50+ AI tells documentados</span>
+│       │   ├── tool-output-verifier/      <span class="comment"># 4-checks gate</span>
+│       │   └── tool-firecrawl-scraper/
+│       └── <span class="dir">visualization/</span>                  <span class="comment"># Vacío en v0.4 (categoría preparada)</span>
+│
+├── <span class="dir">brand-context/</span>                          <span class="comment"># Capa estática del operador — privada (.gitignore)</span>
+│   ├── README.md
+│   ├── voice/                             <span class="comment"># voice-profile + register-{a,b,c}.md</span>
+│   ├── positioning/
+│   ├── icp/
+│   └── assets/                            <span class="comment"># Logos, colores, fuentes (Firecrawl)</span>
+│
+├── <span class="dir">context/</span>                                <span class="comment"># Capa dinámica del operador — privada</span>
+│   ├── README.md
+│   ├── soul.md                            <span class="comment"># Personalidad agente</span>
+│   ├── user.md                            <span class="comment"># Perfil operador en repo</span>
+│   ├── learnings.md                       <span class="comment"># Feedback consolidado por skill</span>
+│   └── daily-memory/                      <span class="comment"># Sesiones por fecha (auto)</span>
+│
+├── <span class="dir">projects/</span>                               <span class="comment"># Outputs (privado)</span>
+│   └── briefs/                            <span class="comment"># Planned + GSD projects</span>
+│
+├── <span class="dir">clients/</span>                                <span class="comment"># Multi-cliente</span>
+│   └── <span class="dir">_templates/</span>                         <span class="comment"># 4 verticales rellenos como punto de partida</span>
+│       ├── README.md
+│       ├── freelance-ia/                  <span class="comment"># Operador IA solo, ticket 5-50K€</span>
+│       │   ├── README.md
+│       │   ├── brand-context/voice/voice-profile.template.md
+│       │   ├── brand-context/positioning/positioning.template.md
+│       │   ├── brand-context/icp/icp.template.md
+│       │   └── context/{soul.md, user.template.md}
+│       ├── agencia-marketing/             <span class="comment"># 2-10 personas, MRR recurrente</span>
+│       ├── formador-online/               <span class="comment"># Coach/educador, 200-2000€</span>
+│       └── consultoria-b2b/               <span class="comment"># High-ticket 30-300K€</span>
+│
+├── <span class="dir">docs/</span>                                   <span class="comment"># 5 docs operativos</span>
+│   ├── installation.md
+│   ├── quickstart.md
+│   ├── multi-client-guide.md              <span class="new"># Cómo trabajar con N clientes</span>
+│   ├── mcps-curated.md                    <span class="new"># 10 MCPs validados</span>
+│   ├── skills-recommended.md              <span class="new"># Lista skills externas curadas</span>
+│   └── archive/                           <span class="comment"># Docs antiguos de Sinapsis (referencia)</span>
+│
+├── <span class="dir">scripts/</span>                                <span class="comment"># 4 scripts de gestión</span>
+│   ├── install.sh                         <span class="comment"># Delega a Sinapsis + setup OS</span>
+│   ├── add-client.sh                      <span class="comment"># Crea cliente desde template</span>
+│   ├── update.sh                          <span class="comment"># Pull con conflict resolution</span>
+│   ├── validate-skill.sh                  <span class="new"># Valida skill antes de instalar</span>
+│   └── skill-change-detector.sh           <span class="comment"># Hook local detección de cambios</span>
+│
+├── <span class="dir">tests/</span>                                  <span class="comment"># Vacío en v0.4 (los tests viven en vendor/)</span>
+│
+└── <span class="vendor"><span class="dir">vendor/</span></span>
+    └── <span class="vendor">sinapsis/</span>                       <span class="comment"># Sinapsis v4.5 íntegro (61 archivos)</span>
+        ├── commands/                      <span class="comment"># 16 commands de Sinapsis (instalan global)</span>
+        ├── core/                          <span class="comment"># 16 archivos: scripts shell, JSON state, Python dashboard</span>
+        ├── skills/                        <span class="comment"># 3 skills core: skill-router, sinapsis-learning, sinapsis-instincts</span>
+        ├── docs/                          <span class="comment"># 7 docs upstream</span>
+        ├── tests/                         <span class="comment"># 8 test scripts (112 tests)</span>
+        ├── install.sh                     <span class="comment"># Installer original de Sinapsis</span>
+        └── install.bat                    <span class="comment"># Installer Windows</span>
+</div>
+</details>
+
+<h3>Reglas de seguridad por carpeta</h3>
+<table>
+  <thead>
+    <tr><th>Carpeta</th><th>Origen</th><th>Se commitea</th><th>Update.sh la toca</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Raíz (README, CLAUDE.md...)</td><td>iAmasters OS</td><td>Sí</td><td>Sí (safe)</td></tr>
+    <tr><td><code>.claude/skills/</code> (default)</td><td>iAmasters OS</td><td>Sí</td><td>Sí, con conflict-resolution si modificaste</td></tr>
+    <tr><td><code>.claude/skills/</code> (custom del operador)</td><td>Operador</td><td>Operador decide</td><td>NO se sobrescribe sin permiso</td></tr>
+    <tr><td><code>brand-context/</code></td><td>Operador</td><td>NO (privado)</td><td>NUNCA</td></tr>
+    <tr><td><code>context/</code> (excepto soul/learnings)</td><td>Operador</td><td>NO (privado)</td><td>NUNCA</td></tr>
+    <tr><td><code>projects/</code></td><td>Operador</td><td>NO (privado)</td><td>NUNCA</td></tr>
+    <tr><td><code>clients/&lt;nombre&gt;/</code></td><td>Operador</td><td>NO (privado)</td><td>NUNCA</td></tr>
+    <tr><td><code>clients/_templates/</code></td><td>iAmasters OS</td><td>Sí</td><td>Sí</td></tr>
+    <tr><td><code>vendor/sinapsis/</code></td><td>Upstream Luis</td><td>Sí</td><td>Sí (vendored update)</td></tr>
+    <tr><td><code>.env</code></td><td>Operador</td><td>NUNCA</td><td>NUNCA</td></tr>
+  </tbody>
+</table>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="instalacion">
+<h2>6. Cómo se instala</h2>
+
+<h3>Prerequisitos</h3>
+<ul>
+  <li><strong>Claude Code CLI</strong> instalado y autenticado con plan Pro o Max → <a href="https://claude.ai/code">claude.ai/code</a></li>
+  <li><strong>Node.js 18+</strong> → <a href="https://nodejs.org">nodejs.org</a></li>
+  <li><strong>Python 3.9+</strong> (para hooks Sinapsis)</li>
+  <li><strong>Git</strong></li>
+</ul>
+
+<h3>Instalación rápida</h3>
+<pre><code>git clone https://github.com/angelapaia/iamasters-os.git
+cd iamasters-os
+bash scripts/install.sh</code></pre>
+
+<h3>Qué hace el instalador (6 pasos)</h3>
+
+<div class="flow-step">
+  <div class="flow-num">1</div>
+  <div class="flow-content">
+    <h4>Comprueba prerequisitos</h4>
+    <p>Verifica que Claude Code, Node.js, Python 3 y Git están en PATH. Si falta algo crítico → exit con mensaje claro.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">2</div>
+  <div class="flow-content">
+    <h4>Detecta estado de Sinapsis</h4>
+    <p>Si <code>~/.claude/skills/_catalog.json</code> existe → Sinapsis ya instalado, salta. Si no → continúa al paso 3.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">3</div>
+  <div class="flow-content">
+    <h4>Instala Sinapsis (si hace falta)</h4>
+    <p>Ejecuta <code>bash vendor/sinapsis/install.sh</code> que es el installer original de Luis sin modificar. Configura los 7 hooks de Sinapsis en <code>~/.claude/settings.json</code> (4 PreToolUse + 1 PostToolUse + 1 Stop + 1 PreCompact).</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">4</div>
+  <div class="flow-content">
+    <h4>Inicializa la capa OS</h4>
+    <p>Crea <code>context/soul.md</code>, <code>context/user.md</code>, <code>context/learnings.md</code> con plantillas. Crea <code>.gitkeep</code> en carpetas vacías para que git las trackee.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">5</div>
+  <div class="flow-content">
+    <h4>Instala hook local del OS</h4>
+    <p>Crea <code>scripts/skill-change-detector.sh</code> que detecta cuando se añade/modifica una skill y flagea para sync en próximo wrap-up.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">6</div>
+  <div class="flow-content">
+    <h4>Verifica instalación</h4>
+    <p>Comprueba que <code>~/.claude/skills/</code> y <code>.claude/settings.json</code> existen. Si todo OK → muestra "siguiente paso".</p>
+  </div>
+</div>
+
+<p style="margin-top:24px"><strong>Tiempo total:</strong> ~30 segundos.</p>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="primer-uso">
+<h2>7. Primer uso paso a paso (los primeros 30 minutos)</h2>
+
+<div class="flow-step">
+  <div class="flow-num">1</div>
+  <div class="flow-content">
+    <h4>Arrancar Claude Code en el repo</h4>
+    <pre><code>cd iamasters-os
+claude</code></pre>
+    <p>Claude lee <code>CLAUDE.md</code> raíz y ejecuta su "MANDATORY first action": leer <code>~/.claude/skills/_operator-state.json</code>. Como tiene <code>needsOnboarding: true</code> → invoca automáticamente la skill <code>meta-onboarding-wizard</code>.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">2</div>
+  <div class="flow-content">
+    <h4>Onboarding wizard (3 minutos)</h4>
+    <p>El wizard hace 7 preguntas:</p>
+    <ol>
+      <li><strong>Avatar</strong>: single business / freelance / agencia / formador</li>
+      <li><strong>Nivel técnico</strong>: cero / intermedio / avanzado</li>
+      <li><strong>Dominio principal</strong>: marketing / operations / strategy / dev / mixto</li>
+      <li><strong>Stack actual</strong> (multi-select)</li>
+      <li><strong>Idioma de outputs cliente</strong> (si aplica)</li>
+      <li><strong>Firecrawl API key</strong> (opcional)</li>
+      <li><strong>Identidad básica</strong>: nombre, email, web/LinkedIn</li>
+    </ol>
+    <p>Configura defaults inteligentes y rellena <code>operator-state.json</code> + <code>context/user.md</code>.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">3</div>
+  <div class="flow-content">
+    <h4>Brand voice setup (5-10 minutos)</h4>
+    <p>El wizard pregunta si quieres lanzar <code>marketing-brand-voice</code>. Si dices sí:</p>
+    <ul>
+      <li>Pegas tus URLs públicas (web, LinkedIn, YouTube, blog)</li>
+      <li>Firecrawl scraping → extrae voice samples</li>
+      <li>6 preguntas de calibración (tono dominante, vocabulario que evitas, frases-firma, jerga propia, anti-modelo, modelo aspiracional)</li>
+      <li>Genera <code>voice-profile.md</code> + <code>samples.md</code> + 3 registros A/B/C</li>
+    </ul>
+    <p>Tu marca queda "instalada" en el OS. Cualquier skill marketing-* la usará automáticamente.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">4</div>
+  <div class="flow-content">
+    <h4>Primera tarea real</h4>
+    <p>Pides algo concreto. Ejemplo: <em>"Escribe 3 versiones de post de LinkedIn sobre [tu tema]"</em>.</p>
+    <p>Claude:</p>
+    <ol>
+      <li>Invoca <code>marketing-copywriting</code></li>
+      <li>Lee tu brand-context (voice + positioning + ICP)</li>
+      <li>Genera 3 variaciones con ángulos distintos (storytelling / contraintuitivo / problema-solución)</li>
+      <li>Pasa CADA variación por <code>tool-output-verifier</code> (humanizer + brand voice + length + factuality)</li>
+      <li>Te entrega las 3 con scores y sugerencias</li>
+    </ol>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">5</div>
+  <div class="flow-content">
+    <h4>Cierre con /wrap-up</h4>
+    <pre><code>/wrap-up</code></pre>
+    <p>Genera daily summary, sincroniza skills si añadiste alguna, propone Git commit (espera tu OK), te dice qué retomar mañana.</p>
+  </div>
+</div>
+
+<div class="flow-step">
+  <div class="flow-num">6</div>
+  <div class="flow-content">
+    <h4>Próximos días</h4>
+    <p>Cuando vuelvas a abrir Claude Code en el repo, ejecuta <code>/start-here</code>. Te recapitulará lo de ayer + propondrá tarea del día. La memoria persiste.</p>
+  </div>
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="versiones">
+<h2>8. Las 4 versiones (v0.1 → v0.4) <span class="count">construidas en 1 sesión</span></h2>
+
+<div class="timeline">
+
+<div class="timeline-item">
+  <h3>v0.1.0 <span class="commit">commit 803eb34</span></h3>
+  <p><strong>Esqueleto + Sinapsis vendored + 4 meta-skills</strong></p>
+  <ul>
+    <li>Raíz: README.md (132 líneas), CLAUDE.md (~150 líneas con onboarding flow), AGENTS.md, LICENSE (MIT), CHANGELOG, .gitignore extendido, .env.example</li>
+    <li>Sinapsis v4.5 vendored intacto en <code>vendor/sinapsis/</code> — 61 archivos, 112 tests upstream</li>
+    <li><strong>4 meta-skills canónicas</strong>:
+      <ul>
+        <li><code>meta-skill-creator</code> — define el patrón canónico que sigue el resto + plantilla SKILL.md base + 3 ejemplos</li>
+        <li><code>meta-onboarding-wizard</code> — los 7 pasos del primer arranque</li>
+        <li><code>meta-start-here</code> — ritual diario</li>
+        <li><code>meta-wrap-up</code> — cierre + commit + daily summary</li>
+      </ul>
+    </li>
+    <li><code>scripts/install.sh</code> — delega a Sinapsis + setup OS (6 pasos, ~30 segundos)</li>
+    <li>Estructura de carpetas: brand-context, context, projects, clients, docs</li>
+  </ul>
+</div>
+
+<div class="timeline-item">
+  <h3>v0.2.0 <span class="commit">commit d6be1d1</span></h3>
+  <p><strong>8 skills marketing core + tools primitivos</strong></p>
+  <p>Tools (3):</p>
+  <ul>
+    <li><code>tool-humanizer</code> — detector + reescritor anti-AI con scoring 0-10. Incluye <code>references/ai-tells.md</code> con 50+ patrones detectables documentados (léxicos, estructurales, tono, formato, emojis, hashtags). 3 ejemplos completos antes/después con scoring.</li>
+    <li><code>tool-output-verifier</code> — gate de calidad con 4 checks (humanizer + brand voice + length + factuality). Tabla mantenida con 30+ plataformas y sus límites min/max/ideal.</li>
+    <li><code>tool-firecrawl-scraper</code> — wrapper de Firecrawl API con degradación graceful si no hay API key.</li>
+  </ul>
+  <p>Marketing (5):</p>
+  <ul>
+    <li><code>marketing-brand-voice</code> — voice profile + 3 registros (A formal, B divulgativo, C cercano). Combina interview directa + Firecrawl scraping. Output: 5 archivos en brand-context/voice/.</li>
+    <li><code>marketing-positioning</code> — análisis competidores + 3-5 ángulos + recomendación.</li>
+    <li><code>marketing-icp</code> — perfil cliente ideal con buying triggers + lenguaje + anti-ICP.</li>
+    <li><code>marketing-copywriting</code> — generador con voice + register auto, 2-3 variaciones por output, gate obligatorio.</li>
+    <li><code>marketing-content-repurposing</code> — 1 fuente → 5-8 piezas multiplataforma con calendar.</li>
+  </ul>
+  <p><strong>Patrón skill collaboration documentado:</strong> <code>copywriting → output-verifier → humanizer (transitivo)</code>.</p>
+</div>
+
+<div class="timeline-item">
+  <h3>v0.3.0 <span class="commit">commit 0e85067</span></h3>
+  <p><strong>Multi-cliente + 4 templates verticales + scripts de gestión</strong></p>
+  <ul>
+    <li><strong>4 templates verticales completos</strong> en <code>clients/_templates/</code>:
+      <ul>
+        <li><code>freelance-ia/</code> — operador IA solo, ticket 5-50K€/proyecto</li>
+        <li><code>agencia-marketing/</code> — pequeña agencia, MRR recurrente</li>
+        <li><code>formador-online/</code> — coach/educador, ticket 200-2000€</li>
+        <li><code>consultoria-b2b/</code> — high-ticket 30-300K€/engagement</li>
+      </ul>
+      Cada template: README específico + voice + positioning + ICP + soul + user.template = 6 archivos × 4 = 24 archivos
+    </li>
+    <li><code>scripts/add-client.sh</code> — crea cliente desde template con sustitución <code>{{CLIENT_NAME}}</code></li>
+    <li><code>scripts/update.sh</code> — pull con conflict resolution caso por caso, backup automático en <code>.backup/&lt;timestamp&gt;/</code>, user data NUNCA pisado</li>
+  </ul>
+</div>
+
+<div class="timeline-item">
+  <h3>v0.4.0 <span class="commit">commit ce649b1</span></h3>
+  <p><strong>Marketplace local + MCPs curados + docs operativos</strong></p>
+  <ul>
+    <li><code>/install-skill &lt;github-url&gt;</code> — instala skill externa con validación previa local
+      <ul>
+        <li>Descarga a TMP, valida YAML frontmatter, name kebab-case, description 30-500 chars</li>
+        <li>Detecta scripts con patrones peligrosos (rm -rf /, eval, dd, mkfs, curl|sh)</li>
+        <li>Detecta credenciales hardcoded (regex API keys/tokens)</li>
+        <li>Comprueba conflicto con skills locales</li>
+        <li>Output color-coded con OK/WARN/ERROR</li>
+      </ul>
+    </li>
+    <li><code>/install-mcp &lt;name&gt;</code> — instala MCP server desde lista curada</li>
+    <li><code>scripts/validate-skill.sh</code> — el motor de validación (~250 líneas)</li>
+    <li>3 docs operativos extensos:
+      <ul>
+        <li><code>docs/mcps-curated.md</code> — Top 5 (context7, github, supabase, notion, firecrawl) + 5 útiles + warnings</li>
+        <li><code>docs/skills-recommended.md</code> — skills externas validadas por categoría + skills a evitar</li>
+        <li><code>docs/multi-client-guide.md</code> — guía operativa multi-cliente con flujos típicos y troubleshooting</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+
+</div>
+
+<div class="callout">
+  <strong>Tag actual:</strong> <code>v0.4.0</code> en <a href="https://github.com/angelapaia/iamasters-os">github.com/angelapaia/iamasters-os</a> · 4 commits limpios · 146 archivos totales · 2.1 MB
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="skills">
+<h2>9. Las 12 skills al detalle</h2>
+
+<p>Todas las skills siguen el patrón canónico definido en <code>meta-skill-creator</code>: SKILL.md con YAML frontmatter (name + description) + Process numerado + Outputs + Skills que llama + Edge cases. Las que tienen knowledge extenso lo separan en <code>references/</code>.</p>
+
+<h3>Categoría _meta — sistema (4 skills)</h3>
+
+<div class="grid grid-2">
+  <div class="skill-card">
+    <h4>meta-skill-creator</h4>
+    <p class="desc">Crea skills nuevas siguiendo el patrón canónico. Define las reglas que sigue el resto del sistema: YAML frontmatter completo, progressive disclosure, steps testables, skill collaboration explícita, learnings hook al cierre.</p>
+    <div class="meta-line"><span class="tag">175 líneas</span><span class="tag">+ skill-template.md</span><span class="tag">+ 3 examples</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>meta-onboarding-wizard</h4>
+    <p class="desc">Lanza el onboarding inicial al primer arranque. 7 preguntas (avatar, nivel, dominio, stack, idioma, Firecrawl, identidad). Configura defaults inteligentes según respuestas. Solo se ejecuta UNA vez por instalación.</p>
+    <div class="meta-line"><span class="tag">112 líneas</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>meta-start-here</h4>
+    <p class="desc">Ritual de inicio de sesión. Lee operator-state, user.md, daily summary de ayer, learnings, proyectos abiertos. Saluda con resumen + propuesta de tarea. Si detecta primer arranque, deriva a onboarding-wizard.</p>
+    <div class="meta-line"><span class="tag">94 líneas</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>meta-wrap-up</h4>
+    <p class="desc">Cierre de sesión. Sync skills-catalog, update CLAUDE.md skills registry, append learnings, genera daily-summaries/&lt;TODAY&gt;.md, propone commit (espera OK), sugiere /eod si es final del día.</p>
+    <div class="meta-line"><span class="tag">115 líneas</span></div>
+  </div>
+</div>
+
+<h3>Categoría tools — primitivas (3 skills)</h3>
+
+<div class="grid grid-2">
+  <div class="skill-card">
+    <h4>tool-humanizer</h4>
+    <p class="desc">Detecta y elimina patrones AI en cualquier texto. Devuelve score 0-10 + reescritura con sugerencias. Penalty por categoría documentado en references/ai-tells.md (50+ patrones: léxicos, estructurales, tono, formato).</p>
+    <div class="meta-line"><span class="tag">146 líneas</span><span class="tag">+ ai-tells.md</span><span class="tag">+ examples.md</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>tool-output-verifier</h4>
+    <p class="desc">Gate de calidad antes de entregar al cliente. 4 checks: humanizer score (threshold por plataforma), brand voice match (registros A/B/C), length per platform (30+ plataformas mapeadas), factuality flags. Pasa o bloquea.</p>
+    <div class="meta-line"><span class="tag">174 líneas</span><span class="tag">+ platform-limits.md</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>tool-firecrawl-scraper</h4>
+    <p class="desc">Wrapper de Firecrawl API para scrapear páginas web sin bot blockers. Usado por marketing-brand-voice y strategy-competitor-monitor. Degradación graceful si no hay API key (fallback a WebFetch).</p>
+    <div class="meta-line"><span class="tag">131 líneas</span></div>
+  </div>
+</div>
+
+<h3>Categoría marketing (5 skills)</h3>
+
+<div class="grid grid-2">
+  <div class="skill-card">
+    <h4>marketing-brand-voice</h4>
+    <p class="desc">Voice profile completo del operador con 3 registros A/B/C. Combina interview directa + Firecrawl scraping de URLs públicas. Output: voice-profile.md + samples.md + 3 register-*.md en brand-context/voice/.</p>
+    <div class="meta-line"><span class="tag">308 líneas</span><span class="tag">la más extensa</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>marketing-positioning</h4>
+    <p class="desc">Construye o refina posicionamiento. Analiza competidores con tool-firecrawl-scraper, identifica hueco, propone 3-5 ángulos con análisis. Output: positioning.md con statement + diferencial + alternativas + unfair advantage + mensaje en 3 longitudes.</p>
+    <div class="meta-line"><span class="tag">186 líneas</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>marketing-icp</h4>
+    <p class="desc">Define ICP en detalle: dolor exacto, lenguaje que usa, buying triggers, anti-ICP. Combina interview con análisis de clientes buenos vs malos. Frases de validación para próxima call. Customer journey completo.</p>
+    <div class="meta-line"><span class="tag">200 líneas</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>marketing-copywriting</h4>
+    <p class="desc">Genera copy para plataforma específica usando brand-voice + register auto-detectado. Devuelve 2-3 variaciones con ángulos distintos. Pasa por tool-output-verifier obligatoriamente. La skill estrella del módulo.</p>
+    <div class="meta-line"><span class="tag">196 líneas</span><span class="tag">invoca verifier + humanizer</span></div>
+  </div>
+
+  <div class="skill-card">
+    <h4>marketing-content-repurposing</h4>
+    <p class="desc">Convierte 1 pieza fuente (video, podcast, transcript, blog) en 5-8 piezas multiplataforma. Output paquete con LinkedIn + X thread + email + Instagram + Reel + blog headlines. Genera content calendar.</p>
+    <div class="meta-line"><span class="tag">161 líneas</span><span class="tag">orquesta varias skills</span></div>
+  </div>
+</div>
+
+<h3>Categorías preparadas para versiones siguientes</h3>
+<ul>
+  <li><strong>operations/</strong> — vacío en v0.4. Reservado para meeting-notes, task-priority (Eisenhower)</li>
+  <li><strong>strategy/</strong> — vacío en v0.4. Reservado para trending-research, competitor-monitor</li>
+  <li><strong>visualization/</strong> — vacío en v0.4. Reservado para excalidraw-diagram</li>
+</ul>
+
+<h3>Diagrama de skill collaboration</h3>
+<pre><code>marketing-content-repurposing
+        ↓ (orquesta)
+   marketing-copywriting (×N por plataforma)
+        ↓ (gate obligatorio)
+   tool-output-verifier
+        ↓ (check 1)
+   tool-humanizer
+
+marketing-brand-voice
+        ↓ (paso 2 opcional)
+   tool-firecrawl-scraper
+
+marketing-positioning
+        ↓ (análisis competidores opcional)
+   tool-firecrawl-scraper</code></pre>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="commands">
+<h2>10. Los 5 commands del OS</h2>
+
+<table>
+  <thead>
+    <tr><th>Command</th><th>Qué hace</th><th>Skill que invoca</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>/start-here</code></td>
+      <td>Ritual de inicio: carga contexto, recapitula, propone tarea del día</td>
+      <td>meta-start-here</td>
+    </tr>
+    <tr>
+      <td><code>/wrap-up</code></td>
+      <td>Cierre: daily summary, sync, commit propuesto</td>
+      <td>meta-wrap-up</td>
+    </tr>
+    <tr>
+      <td><code>/add-client</code></td>
+      <td>Crea cliente nuevo desde template vertical</td>
+      <td>(wrapper a scripts/add-client.sh)</td>
+    </tr>
+    <tr>
+      <td><code>/install-skill</code></td>
+      <td>Instala skill externa de GitHub con validación local</td>
+      <td>(wrapper a scripts/validate-skill.sh)</td>
+    </tr>
+    <tr>
+      <td><code>/install-mcp</code></td>
+      <td>Instala MCP server desde lista curada</td>
+      <td>(interpretativo: lee docs/mcps-curated.md)</td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="callout">
+  <strong>Plus:</strong> heredas todos los slash commands de Sinapsis (instalados global): <code>/system-status</code>, <code>/evolve</code>, <code>/instinct-status</code>, <code>/passive-status</code>, <code>/eod</code>, <code>/dream</code>, <code>/dashboard-sinapsis</code>, <code>/analyze-session</code>, <code>/promote</code>, <code>/downvote</code>, <code>/cleanup</code>, <code>/skill-audit</code>, <code>/projects</code>, <code>/backup</code>, <code>/restore</code>, <code>/session-end</code> → 16 commands más.
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="templates">
+<h2>11. Los 4 templates verticales</h2>
+
+<p>Cada template incluye 6 archivos: README específico al vertical + voice-profile + positioning + ICP (en brand-context/) + soul.md + user.template.md (en context/). Los placeholders <code>{{CLIENT_NAME}}</code> se sustituyen automáticamente al ejecutar <code>add-client.sh</code>.</p>
+
+<div class="grid grid-2">
+
+<div class="card card-blue">
+  <h4>freelance-ia</h4>
+  <p><strong>Para</strong>: operador IA solo, sirve a 3-10 clientes, ticket 5-50K€/proyecto.</p>
+  <p><strong>Voice</strong>: profesional pero accesible (B con toques de C). Confiable, honesto, pragmático.</p>
+  <p><strong>Positioning sugerido</strong>: vertical-specialist o use-case-specialist. Anti-vendehumos.</p>
+  <p><strong>ICP típico</strong>: pymes 5-30 personas con dolor concreto en horas perdidas / clientes en cola / empleado clave que se va.</p>
+  <p><strong>Skills favoritas</strong>: marketing-copywriting, marketing-content-repurposing, tool-output-verifier.</p>
+</div>
+
+<div class="card card-blue">
+  <h4>agencia-marketing</h4>
+  <p><strong>Para</strong>: equipo 2-10, 5-30 clientes simultáneos, MRR recurrente.</p>
+  <p><strong>Voice</strong>: profesional creativo, equilibrio formal-cercano (B con A para premium). <em>Cada cliente final tiene SU voice.</em></p>
+  <p><strong>Positioning sugerido</strong>: agencia especialista, no full-service. Foco vertical o servicio.</p>
+  <p><strong>ICP típico</strong>: pymes/scaleups con MRR establecido buscando crecer marketing.</p>
+  <p><strong>Skills favoritas</strong>: marketing-content-repurposing (alta frecuencia output) + marketing-copywriting.</p>
+</div>
+
+<div class="card card-blue">
+  <h4>formador-online</h4>
+  <p><strong>Para</strong>: coach/educador, vende cursos/comunidad/cohort, ticket 200-2000€.</p>
+  <p><strong>Voice</strong>: cercano, autoridad ganada, vulnerabilidad calibrada (B con C importante).</p>
+  <p><strong>Positioning sugerido</strong>: vertical-first, method-first o anti-genérico. Tu marca personal ES el producto.</p>
+  <p><strong>ICP típico</strong>: persona aspiracional con dolor concreto que puede pagar 200-2000€.</p>
+  <p><strong>Skills favoritas</strong>: marketing-brand-voice (la voz personal es el producto), content-repurposing (alta frecuencia), email-sequence (nurture → launch).</p>
+</div>
+
+<div class="card card-blue">
+  <h4>consultoria-b2b</h4>
+  <p><strong>Para</strong>: consultor estratégico B2B, ticket 30-300K€, engagement 3-12 meses.</p>
+  <p><strong>Voice</strong>: formal-autoridad, low-warmth, high-precision (mayoritariamente A). Ex-Big4 estilo.</p>
+  <p><strong>Positioning sugerido</strong>: vertical + use-case, método propio nombrado, anti-Big4.</p>
+  <p><strong>ICP típico</strong>: empresa mediana 50-2000 empleados, decisor C-level, comité de 3+.</p>
+  <p><strong>Skills favoritas</strong>: marketing-positioning (clave para diferenciar), marketing-icp (ticket alto = ICP muy específico), marketing-copywriting registro A.</p>
+</div>
+
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="scripts">
+<h2>12. Los 4 scripts</h2>
+
+<details>
+<summary><code>scripts/install.sh</code> — installer principal del repo</summary>
+<p>Delega a <code>vendor/sinapsis/install.sh</code> + inicializa la capa OS. 6 pasos color-coded: prerequisitos → detección Sinapsis → instalación si falta → init capa OS (soul.md, user.md, learnings.md) → hook local → verificación. Tiempo total ~30 segundos.</p>
+</details>
+
+<details>
+<summary><code>scripts/add-client.sh</code> — crea cliente desde template</summary>
+<p>Argumentos: <code>nombre-cliente</code> (kebab-case obligatorio) + <code>template</code> (uno de los 4 verticales o "vacio"). Valida nombre, copia template, sustituye <code>{{CLIENT_NAME}}</code> en todos los .md, genera <code>clients/&lt;nombre&gt;/CLAUDE.md</code> con overrides específicos.</p>
+<pre><code>bash scripts/add-client.sh acme-corp freelance-ia</code></pre>
+<p>Output: estructura completa creada en <code>clients/acme-corp/</code>, lista para configurar.</p>
+</details>
+
+<details>
+<summary><code>scripts/update.sh</code> — pull con conflict resolution</summary>
+<p>Maneja 4 escenarios:</p>
+<ol>
+  <li><strong>Sin cambios</strong>: ya estás al día, exit limpio</li>
+  <li><strong>Upstream actualizó, tú no modificaste</strong>: pull directo de archivos seguros</li>
+  <li><strong>Tú modificaste local, upstream no</strong>: keep local automáticamente</li>
+  <li><strong>Conflicto en misma línea</strong>: prompt caso-por-caso (k=keep / u=use upstream / d=diff / s=skip)</li>
+</ol>
+<p>Backup automático en <code>.backup/&lt;timestamp&gt;/</code> antes de tocar nada. <strong>User data nunca se sobrescribe</strong> (brand-context, context, projects, clients, .env).</p>
+</details>
+
+<details>
+<summary><code>scripts/validate-skill.sh</code> — valida skill antes de instalar</summary>
+<p>El motor del comando <code>/install-skill</code>. Pasos:</p>
+<ol>
+  <li>Parsea URL de GitHub (owner/repo + branch + subpath)</li>
+  <li>Shallow clone a <code>/tmp/iamasters-os-skill-validate-&lt;hash&gt;/</code></li>
+  <li>Valida estructura: SKILL.md presente, YAML frontmatter en líneas 1-3</li>
+  <li>Valida name kebab-case + description 30-500 chars + verbo de intención</li>
+  <li>Detecta scripts con patrones peligrosos (rm -rf /, eval, dd if=, mkfs, curl|sh)</li>
+  <li>Detecta credenciales hardcoded (regex API keys, tokens, passwords)</li>
+  <li>Comprueba conflicto con skills locales del mismo nombre</li>
+  <li>Output color-coded: <span style="color:#3fb950">OK</span> · <span style="color:#d29922">WARN</span> · <span style="color:#f85149">ERROR</span> + recomendaciones de instalación</li>
+</ol>
+</details>
+
+<details>
+<summary><code>scripts/skill-change-detector.sh</code> — hook local</summary>
+<p>Hook configurado en <code>.claude/settings.json</code> que se dispara en PostToolUse de Edit/Write. Si la edición fue en <code>.claude/skills/</code>, escribe flag en <code>.claude/.skills-pending.json</code> para que el próximo <code>/wrap-up</code> sincronice el catálogo y actualice el registry de CLAUDE.md.</p>
+</details>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="docs">
+<h2>13. Los 5 docs operativos</h2>
+
+<div class="grid grid-2">
+
+<div class="card card-purple">
+  <h4>docs/installation.md</h4>
+  <p>Guía completa de instalación: prerequisitos, comando único, qué hace cada paso del installer, primer arranque, verificación, troubleshooting (Sinapsis no se instaló / Claude Code no encontrado / permission denied / onboarding no se lanza), update y desinstalación.</p>
+</div>
+
+<div class="card card-purple">
+  <h4>docs/quickstart.md</h4>
+  <p>Los primeros 30 minutos paso a paso. Minuto 0-5 onboarding · 5-15 brand voice · 15-25 primera tarea real · 25-30 wrap-up · próximos días · cuándo NO usar el OS · siguiente lectura.</p>
+</div>
+
+<div class="card card-purple">
+  <h4>docs/multi-client-guide.md</h4>
+  <p>Guía operativa multi-cliente. Cuándo usar / no usar · estructura herencia CLAUDE.md · skills custom por cliente vs globales · cambiar de cliente · seguridad: separación de info · update.sh y multi-cliente · 2 ejemplos de flujos típicos · best practices · troubleshooting.</p>
+</div>
+
+<div class="card card-purple">
+  <h4>docs/mcps-curated.md</h4>
+  <p>Lista mantenida de 10 MCPs útiles para operadores IA. Top 5: <code>context7</code> (docs vivos), <code>github</code>, <code>supabase</code>, <code>notion</code>, <code>firecrawl</code>. + 5 útiles: linear, gmail, slack, filesystem. + warnings sobre MCPs a evitar (write redes sociales sin gates). Token budget recomendado: 5-7 MCPs activos máximo.</p>
+</div>
+
+<div class="card card-purple">
+  <h4>docs/skills-recommended.md</h4>
+  <p>Lista de skills externas validadas para extender el OS. Anthropic core (skill-creator, visual-explainer, pdf, docx, xlsx) + por avatar (marketing / operations / dev). Plus skills a evitar: sin description clara, duplicadas, "todo en uno". Lista corta para empezar tras instalación.</p>
+</div>
+
+</div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="multicliente">
+<h2>14. Flujo multi-cliente típico</h2>
+
+<h3>Crear cliente nuevo</h3>
+<pre><code>bash scripts/add-client.sh acme-corp freelance-ia</code></pre>
+<p>Esto crea <code>clients/acme-corp/</code> con estructura completa: brand-context, context, projects, briefs, CLAUDE.md de overrides.</p>
+
+<h3>Trabajar dentro de un cliente</h3>
+<pre><code>cd clients/acme-corp
+claude</code></pre>
+
+<p>Claude Code arranca en el contexto del cliente:</p>
+<ul>
+  <li>Lee <code>CLAUDE.md</code> raíz del repo (instrucciones generales)</li>
+  <li><strong>+</strong> <code>clients/acme-corp/CLAUDE.md</code> (overrides específicos)</li>
+  <li><strong>+</strong> <code>clients/acme-corp/brand-context/</code> (voice/positioning/ICP propios del cliente)</li>
+  <li><strong>+</strong> <code>clients/acme-corp/context/</code> (soul/user del cliente)</li>
+</ul>
+
+<h3>Ejemplo de día con 3 clientes</h3>
+
+<pre><code><span style="color:#8b949e"># Cliente A (freelance-ia)</span>
+cd clients/acme-corp && claude
+&gt; "Crea LinkedIn post sobre case study X"
+   → marketing-copywriting genera con voice de Acme
+&gt; /wrap-up
+exit
+
+<span style="color:#8b949e"># Cliente B (agencia-marketing)</span>
+cd ../widget-shop && claude
+&gt; "Repurpose último video de su CEO en 5 piezas"
+   → marketing-content-repurposing
+&gt; /wrap-up
+exit
+
+<span style="color:#8b949e"># Cliente C (consultoria-b2b)</span>
+cd ../north-star-consult && claude
+&gt; "Redacta propuesta comercial para nuevo lead"
+   → marketing-copywriting registro A formal
+&gt; /wrap-up
+exit</code></pre>
+
+<h3>Best practices</h3>
+<ol>
+  <li><strong>Siempre <code>cd</code> antes de <code>claude</code></strong>. No trabajar en cliente X desde raíz.</li>
+  <li><strong>Wrap-up al cambiar contexto</strong>. Daily summary se separa por cliente.</li>
+  <li><strong>Brand voice por cliente</strong>, no compartir entre clientes.</li>
+  <li><strong>Una skill custom = un cliente</strong>, o promoverla al raíz si aplica a varios.</li>
+  <li><strong>Backup el cliente regularmente</strong> si tiene info crítica (no del git público).</li>
+</ol>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="decisiones">
+<h2>15. Decisiones técnicas clave</h2>
+
+<details open>
+<summary>Vendoring intacto de Sinapsis</summary>
+<p>Decidimos NO modificar los paths hardcoded de Sinapsis (<code>$HOME/.claude/skills/...</code>) en <code>vendor/sinapsis/</code>. Razones:</p>
+<ul>
+  <li>Sinapsis tiene 112 tests pasando con esos paths. Modificarlos rompe upstream.</li>
+  <li>Cuando Luis publique nueva versión, hacemos <code>git pull</code> en vendor y seguimos funcionando.</li>
+  <li>El installer de Sinapsis está pensado para instalación global. Forzarlo a in-repo era mucho trabajo de reescritura sin valor real.</li>
+</ul>
+<p><strong>Implicación</strong>: Sinapsis vive en <code>~/.claude/</code> (global del operador). El repo iAmasters OS solo añade capas encima. Cross-project memory de Sinapsis aplica a todos los repos del operador, no solo a iAmasters OS.</p>
+</details>
+
+<details>
+<summary>Repo público y neutro (sin info privada)</summary>
+<p>Decisión explícita de Angel: el repo es público (privado en v0 pero pensado para abrirlo) y neutro. Cualquier operador puede clonarlo sin que se cuele info de Angel ni de iAmasters academy.</p>
+<p><strong>Implicación</strong>: los templates de cliente están en blanco con placeholders <code>{{CLIENT_NAME}}</code>. Los ejemplos en docs son genéricos. Las skills no asumen ningún avatar concreto.</p>
+</details>
+
+<details>
+<summary>Sinapsis embedded como engine, no como capa secundaria</summary>
+<p>Los competidores (Agentic OS de Scrapes) tienen un <code>learnings.md</code> plano por skill. Eso es un primer paso muy básico. Synapsis ya está varios niveles por encima: instincts con confidence score, evolución a skills/reglas, projects registry estructurado, dream cycle de hygiene, dashboard.</p>
+<p><strong>Decisión</strong>: trasplantamos Sinapsis íntegro como engine principal, no como capa secundaria. Eso es nuestra mayor ventaja competitiva sobre Scrapes.</p>
+</details>
+
+<details>
+<summary>Patrón canónico de skill definido y enforced</summary>
+<p>El <code>meta-skill-creator</code> define las reglas no-negociables para skills nuevas:</p>
+<ul>
+  <li>YAML frontmatter completo (name kebab-case + description 50-500 chars con verbo de intención)</li>
+  <li>Progressive disclosure (knowledge extenso en <code>references/</code>)</li>
+  <li>Steps numerados y testables</li>
+  <li>Skill collaboration explícita</li>
+  <li>Output verifier gate si genera entregables</li>
+  <li>Learnings hook al cierre</li>
+</ul>
+<p><strong>Implicación</strong>: cualquier skill nueva (interna o instalada via <code>/install-skill</code>) debe cumplir el patrón. <code>scripts/validate-skill.sh</code> hace check automático.</p>
+</details>
+
+<details>
+<summary>3 registros de voice (A/B/C) en lugar de 1 voice profile genérico</summary>
+<p>Scrapes tiene 1 voice profile. Pero la realidad operativa es que escribimos muy distinto en email premium vs LinkedIn vs WhatsApp. Si el OS no lo modela, todos los outputs salen homogéneos.</p>
+<ul>
+  <li><strong>A formal</strong>: email cliente premium, propuesta comercial, contrato</li>
+  <li><strong>B divulgativo</strong>: LinkedIn post, blog, video script, newsletter (95% del contenido público)</li>
+  <li><strong>C cercano</strong>: WhatsApp comunidad, DM, comentarios redes</li>
+</ul>
+<p>El <code>marketing-copywriting</code> auto-detecta el registro correcto según plataforma + purpose.</p>
+</details>
+
+<details>
+<summary>tool-output-verifier como gate obligatorio</summary>
+<p>Todas las skills marketing-* invocan <code>tool-output-verifier</code> en su último paso. No es opcional.</p>
+<p><strong>Por qué</strong>: en operación real, los operadores se saltan los gates "porque tengo prisa" y entregan AI slop al cliente. Hacerlo obligatorio fuerza el patrón profesional.</p>
+<p><strong>Threshold por plataforma</strong>: humanizer ≥8 para email premium · ≥7 para LinkedIn/blog · ≥6 para WhatsApp comunidad. Brand voice match siempre ≥7.</p>
+</details>
+
+<details>
+<summary>Backups automáticos en update.sh</summary>
+<p>Antes de aplicar cualquier update, <code>scripts/update.sh</code> crea backup automático en <code>.backup/&lt;timestamp&gt;/</code> con: <code>.claude/skills/</code>, <code>brand-context/</code>, <code>context/</code>, <code>projects/</code>, <code>clients/</code>, <code>.env</code>, <code>.claude/settings.json</code>.</p>
+<p><strong>Política</strong>: nunca confiar en que algo "no se va a tocar". Backup siempre, recovery 1-comando.</p>
+</details>
+
+<details>
+<summary>User data nunca en git público</summary>
+<p><code>.gitignore</code> extendido excluye:</p>
+<ul>
+  <li><code>brand-context/voice/voice-profile.md</code> (y samples, registers)</li>
+  <li><code>brand-context/positioning/positioning.md</code></li>
+  <li><code>brand-context/icp/icp.md</code></li>
+  <li><code>brand-context/assets/</code></li>
+  <li><code>context/user.md</code> y <code>context/daily-memory/</code></li>
+  <li><code>projects/briefs/*</code> y outputs por skill</li>
+  <li><code>clients/*</code> excepto <code>_templates/</code></li>
+  <li><code>.env</code></li>
+</ul>
+<p>Solo se commitean: README, soul.md, learnings.md (genérico), templates vacíos.</p>
+</details>
+
+<details>
+<summary>Validate-skill no elimina TMP automáticamente</summary>
+<p>Cuando alguien intenta instalar una skill externa con <code>/install-skill</code>, el script valida pero NO elimina el TMP dir. Razones:</p>
+<ul>
+  <li>El operador puede inspeccionar manualmente la skill descargada</li>
+  <li>Si validación falla, podría haber falso positivo y querer revisar</li>
+  <li>Deja al operador decidir cuándo limpiar (rm -rf /tmp/iamasters-os-skill-validate-*)</li>
+</ul>
+</details>
+
+<details>
+<summary>Curated lists son opinated, no inclusivas</summary>
+<p>Las listas <code>docs/mcps-curated.md</code> y <code>docs/skills-recommended.md</code> NO son catálogos exhaustivos. Solo incluyen lo que validamos en producción ≥2 semanas. Razones:</p>
+<ul>
+  <li>Inclusión sin filtro causa decisión paralysis</li>
+  <li>El valor real de una curated list es el filtro</li>
+  <li>"Si no sé, no lo recomiendo" es mejor que "lo metemos por si acaso"</li>
+</ul>
+<p>Para contribuir a las listas hace falta experiencia real documentada (ver sección "Cómo contribuir" en cada doc).</p>
+</details>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="roadmap">
+<h2>16. Roadmap y siguientes pasos</h2>
+
+<h3>v0.5.0 (próxima) — completar skills core</h3>
+<ul>
+  <li><code>marketing-ugc-script</code> — guiones short-form (Reels, TikTok, Shorts)</li>
+  <li><code>marketing-email-sequence</code> — secuencias nurture / launch / win-back</li>
+  <li><code>operations-meeting-notes</code> — resúmenes de Zoom/Fathom transcripts</li>
+  <li><code>operations-task-priority</code> — matriz Eisenhower automática</li>
+  <li><code>strategy-trending-research</code> — monitoring Reddit/X/web</li>
+  <li><code>tool-youtube-transcript</code> — transcripts via API o whisper local</li>
+  <li><code>viz-excalidraw-diagram</code> — diagramas para reels</li>
+</ul>
+
+<h3>v0.6.0 — dashboard del OS</h3>
+<ul>
+  <li>Decidir si fusionar con dashboard de Sinapsis o tener uno propio</li>
+  <li>Métricas: skills más usadas, daily summaries por mes, clientes activos, learnings acumulados</li>
+  <li>HTML standalone (no JS) generado periódicamente por skill auto-mantenida</li>
+</ul>
+
+<h3>v1.0.0 — release pública estable</h3>
+<ul>
+  <li>Tests E2E del flujo completo (clonar → install → onboarding → primera tarea → wrap-up)</li>
+  <li>Documentación pulida con vídeos de demo</li>
+  <li>Plan de mantenimiento de curated lists</li>
+  <li>Decisión de licencia final (MIT confirmada o cambio)</li>
+  <li>Anuncio público + post en LinkedIn de Angel</li>
+</ul>
+
+<h3>Ideas en backlog (sin versión asignada)</h3>
+<ul>
+  <li>UI Command Center web (estilo Agentic OS de Scrapes pero opcional)</li>
+  <li>Skill Vault retención (skills licencia-locked) — solo si se hace producto comercial separado</li>
+  <li>Telemetry opt-in (analytics anonimizado de uso) — pendiente de evaluación legal/privacidad</li>
+  <li>Integraciones específicas: Skool, Telegram, Dispatch — solo si tienen demanda comunidad</li>
+  <li>Templates verticales adicionales: e-commerce, salud, abogados, gestoría</li>
+</ul>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════════ -->
+<section id="para-equipo">
+<h2>17. Qué se espera del equipo</h2>
+
+<div class="highlight-box">
+  <h3 style="margin-top:0">Acción inmediata: validación</h3>
+  <p>Antes de que esto se haga público o se use en producción, necesitamos al menos 2-3 personas del equipo que:</p>
+  <ol>
+    <li><strong>Cloneis el repo</strong> (acceso al privado: pedir a Angel)</li>
+    <li><strong>Ejecutéis <code>bash scripts/install.sh</code></strong> en vuestra máquina (Mac o Windows)</li>
+    <li><strong>Hagáis el onboarding</strong> con datos reales vuestros (vuestro avatar, vuestro stack)</li>
+    <li><strong>Lancéis el brand voice</strong> con vuestras URLs públicas si las tenéis</li>
+    <li><strong>Probéis 1-2 skills</strong> reales (marketing-copywriting con un tema vuestro)</li>
+    <li><strong>Hagáis un wrap-up</strong> al cierre</li>
+    <li><strong>Reportéis bugs/feedback</strong> (issues en GitHub o WhatsApp interno)</li>
+  </ol>
+</div>
+
+<h3>Roles sugeridos para validación</h3>
+<table>
+  <thead>
+    <tr><th>Rol</th><th>Qué validar específicamente</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Fernando</strong> (mano derecha)</td>
+      <td>Coherencia con Brand Voice Manual v1.1. ¿Los 3 registros A/B/C reflejan bien el sistema que diseñamos? ¿Falta algo del manual original?</td>
+    </tr>
+    <tr>
+      <td><strong>Luis</strong> (Synapsis upstream)</td>
+      <td>El vendoring está hecho correctamente. ¿La integración respeta los hooks? ¿Algo que cambiarías de cómo se invoca Synapsis desde el OS?</td>
+    </tr>
+    <tr>
+      <td><strong>Miguel</strong> (marketing/ads)</td>
+      <td>Las skills marketing-* ¿generan output que serviría para un cliente real de ads? ¿Falta tool específico de creatives o ads?</td>
+    </tr>
+    <tr>
+      <td><strong>Jefferson</strong> (investigación)</td>
+      <td>Probar tool-firecrawl-scraper + futuras strategy-trending-research. ¿La calidad del scraping es suficiente para investigación competitiva?</td>
+    </tr>
+    <tr>
+      <td><strong>Alejandro</strong> (soporte técnico)</td>
+      <td>Instalación en máquina nueva: ¿el installer falla en algún caso? Documentar bugs en docs/installation.md sección troubleshooting.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Preguntas abiertas para el equipo</h3>
+<ol>
+  <li><strong>Naming</strong>: ¿"iamasters-os" es el nombre final o lo renombramos antes de publicar? Alternativas posibles: <code>agentic-os-es</code>, <code>operador-ia-os</code>, <code>claude-code-os-es</code>.</li>
+  <li><strong>Licencia</strong>: ¿MIT está bien para todo el código del repo? (Sinapsis vendored conserva su licencia original Source Available de Luis).</li>
+  <li><strong>Roadmap</strong>: ¿v0.5.0 priorizamos las 7 skills marcadas o algo distinto que necesitéis vosotros antes?</li>
+  <li><strong>Distribución</strong>: ¿Lo abrimos público en GitHub cuando esté v1.0.0 o antes? ¿Lo anunciamos primero solo a la comunidad iAmasters como exclusiva?</li>
+  <li><strong>Casos de uso reales</strong>: ¿quién del equipo tiene casos reales con clientes que pueda validar el flujo multi-cliente?</li>
+</ol>
+
+<h3>Cómo dar feedback</h3>
+<ul>
+  <li><strong>Bugs concretos</strong>: issue en GitHub con steps to reproduce + entorno (Mac/Windows, versión Claude Code)</li>
+  <li><strong>Sugerencias de skills nuevas</strong>: documentar caso real donde aporta valor + 3+ ejemplos de uso</li>
+  <li><strong>Mejoras a skills existentes</strong>: PR con la mejora + justificación</li>
+  <li><strong>Feedback estratégico</strong>: WhatsApp directo a Angel</li>
+</ul>
+</section>
+
+</div>
+</main>
+
+<footer>
+  <div class="container">
+    <p><strong>iAmasters OS · v0.4.0</strong> · Construido con Claude (Opus 4.7) · Documento generado 2026-05-07</p>
+    <p style="margin-top:8px">
+      Repo: <a href="https://github.com/angelapaia/iamasters-os">github.com/angelapaia/iamasters-os</a> ·
+      Sinapsis upstream: <a href="https://github.com/Luispitik/sinapsis">github.com/Luispitik/sinapsis</a>
+    </p>
+    <p style="margin-top:14px; font-size:11px; color:#6e7681">
+      Documento confidencial. Compartir solo dentro del equipo iAmasters / Solutech IA.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>
