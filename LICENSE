@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 iAmasters OS contributors
+Copyright (c) 2026 Angel Aparicio · iAmasters Academy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -22,9 +22,24 @@ SOFTWARE.
 
 ---
 
-## Componentes vendored
+## Authorship & Maintenance
 
-Este repositorio incluye Sinapsis v4.5 en `vendor/sinapsis/` bajo licencia
-"Source Available" propia de Luis Pitik. Ver `vendor/sinapsis/LICENSE` para
-detalles. Los términos de iAmasters OS (MIT) NO sustituyen los términos de
-Sinapsis sobre el código de `vendor/sinapsis/`.
+**Author**: Angel Aparicio (<https://angelaparicio.com> · <https://github.com/angelapaia>)
+**Affiliation**: iAmasters Academy (<https://www.skool.com/ia-masters-automations>)
+**Contact**: angel.aparicio92@gmail.com
+**Created**: 2026
+
+## Vendored components
+
+This repository includes Sinapsis v4.5 in `vendor/sinapsis/` under its own
+"Source Available" license by Luis Pitik. See `vendor/sinapsis/LICENSE` for
+details. The MIT terms of iAmasters OS do NOT supersede Sinapsis terms over
+the code in `vendor/sinapsis/`.
+
+## How to cite
+
+If you use iAmasters OS in your work, project or publication, please cite it.
+See `CITATION.cff` for the structured format. Quick reference:
+
+> Aparicio, A. (2026). iAmasters OS [Software]. iAmasters Academy.
+> https://github.com/angelapaia/iamasters-os

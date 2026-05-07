@@ -3,9 +3,11 @@
 > El sistema operativo agéntico para operadores de IA.
 > Castellano. Multi-cliente. Con memoria que evoluciona.
 
-[![Status](https://img.shields.io/badge/status-v0.1.0--dev-orange.svg)](#)
+[![Version](https://img.shields.io/badge/version-v0.4.0-orange.svg)](https://github.com/angelapaia/iamasters-os/releases)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Powered by Sinapsis](https://img.shields.io/badge/engine-Sinapsis%20v4.5-purple.svg)](vendor/sinapsis/)
+[![Maintained by Angel Aparicio](https://img.shields.io/badge/maintained%20by-Angel%20Aparicio-ff8c42.svg)](https://angelaparicio.com)
+[![iAmasters Academy](https://img.shields.io/badge/by-iAmasters%20Academy-b794f4.svg)](https://www.skool.com/ia-masters-automations)
 
 ---
 
@@ -135,6 +137,36 @@ iAmasters OS es código abierto bajo MIT. Las contribuciones bienvenidas:
 - **Inspiración Agentic OS**: la arquitectura de Brand Context + Agent Context + Skills curadas viene del análisis del Agentic Academy de Juanpe Navarro
 - **Brand Voice patterns A/B/C**: inspirado en el Brand Voice Manual de Fernando Montero
 
+## Sobre el proyecto
+
+**iAmasters OS** es propiedad de **Angel Aparicio** y forma parte del ecosistema de productos de **[iAmasters Academy](https://www.skool.com/ia-masters-automations)**, la comunidad de operadores de IA en castellano.
+
+| | |
+|---|---|
+| **Autor y mantenedor** | Angel Aparicio |
+| **Afiliación** | iAmasters Academy |
+| **Web personal** | [angelaparicio.com](https://angelaparicio.com) |
+| **GitHub** | [@angelapaia](https://github.com/angelapaia) |
+| **Comunidad** | [skool.com/ia-masters-automations](https://www.skool.com/ia-masters-automations) |
+| **Email** | angel.aparicio92@gmail.com |
+| **Año** | 2026 |
+
+### Cómo citar
+
+Si usas iAmasters OS en tu trabajo, proyecto o publicación, agradecemos la citación. Ver [`CITATION.cff`](CITATION.cff) para el formato estructurado. Referencia rápida:
+
+> Aparicio, A. (2026). *iAmasters OS* [Software]. iAmasters Academy.
+> https://github.com/angelapaia/iamasters-os
+
+### Code ownership
+
+Este repositorio sigue el modelo CODEOWNERS de GitHub. Cualquier PR requiere review del propietario. Ver [`.github/CODEOWNERS`](.github/CODEOWNERS) para el detalle.
+
+### Marca
+
+"iAmasters Academy", "iAmasters OS" y los logos relacionados son propiedad de Angel Aparicio. El código fuente se publica bajo licencia MIT (libre uso/modificación), pero el uso de la marca y los logos requiere autorización explícita.
+
 ## Licencia
 
-MIT — ver [LICENSE](LICENSE)
+Código fuente bajo MIT — ver [LICENSE](LICENSE).
+Componente vendored Sinapsis v4.5 conserva su licencia "Source Available" original de Luis Pitik en [`vendor/sinapsis/LICENSE`](vendor/sinapsis/LICENSE).

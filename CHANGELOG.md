@@ -15,6 +15,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## v0.4.1 — Atribución y propiedad (2026-05-07)
+
+### Added
+- **LICENSE actualizado** con copyright "© 2026 Angel Aparicio · iAmasters Academy" + sección Authorship & Maintenance + bloque Vendored components clarificando licencia Sinapsis + bloque How to cite
+- **README badges** (5): version, license, sinapsis-engine, maintained-by-angel-aparicio, by-iamasters-academy
+- **README sección "Sobre el proyecto"** con tabla de autoría + cómo citar + nota de marca + code ownership
+- **`.github/CODEOWNERS`** con `* @angelapaia` global + paths específicos
+- **`CITATION.cff`** formato académico con datos completos + preferred-citation + referencia a Sinapsis vendored
+- **GitHub repo metadata** actualizado: description con atribución, homepage a comunidad iAmasters, 7 topics (claude-code, agentic-os, sinapsis, ai-operator, skills-on-demand, iamasters, castellano)
+- **Footer team-presentation.html** con copyright, links propios, nota de marcas
+
+Aplica las 6 capas estándar de atribución documentadas en el repo
+compartido del equipo (`captacion-shared/07-Equipo/repo-attribution-checklist.md`).
+
+---
+
 ## v0.4.0 — Marketplace local + MCPs curados (2026-05-07)
 
 ### Added
