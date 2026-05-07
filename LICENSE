@@ -1,6 +1,6 @@
 MIT License
 
-Copyright (c) 2026 Angel Aparicio · iAmasters Academy
+Copyright (c) 2025-2026 Angel Aparicio · IA Masters Academy
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -24,10 +24,21 @@ SOFTWARE.
 
 ## Authorship & Maintenance
 
-**Author**: Angel Aparicio (<https://angelaparicio.com> · <https://github.com/angelapaia>)
-**Affiliation**: iAmasters Academy (<https://www.skool.com/ia-masters-automations>)
-**Contact**: angel.aparicio92@gmail.com
-**Created**: 2026
+**Author**: Angel Aparicio
+**Affiliation**: IA Masters Academy (a brand of AASC Associates)
+**Web**: https://angelaparicio.com
+**LinkedIn**: https://www.linkedin.com/in/angel-aparicio92/
+**GitHub**: https://github.com/angelapaia
+**Contact**: aaparicio@iamastersacademy.com
+**Community**: https://www.skool.com/ia-masters-automations
+**Created**: 2025
+
+## Trademark notice
+
+"IA Masters Academy", "iAmasters OS" and the chameleon logo are trademarks
+owned by AASC Associates · Angel Aparicio. The MIT license above covers the
+source code only — it does NOT grant rights to use the trademarks or logos.
+For trademark usage permissions, contact aaparicio@iamastersacademy.com.
 
 ## Vendored components
 
@@ -41,5 +52,5 @@ the code in `vendor/sinapsis/`.
 If you use iAmasters OS in your work, project or publication, please cite it.
 See `CITATION.cff` for the structured format. Quick reference:
 
-> Aparicio, A. (2026). iAmasters OS [Software]. iAmasters Academy.
-> https://github.com/angelapaia/iamasters-os
+> Aparicio, A. (2025-2026). iAmasters OS [Software]. IA Masters Academy.
+> https://github.com/iamasters-academy/iamasters-os

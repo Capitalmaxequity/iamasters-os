@@ -1,13 +1,21 @@
-# iAmasters OS
+<p align="center">
+  <img src="assets/logo.png" alt="IA Masters Academy" width="320">
+</p>
 
-> El sistema operativo agéntico para operadores de IA.
-> Castellano. Multi-cliente. Con memoria que evoluciona.
+<h1 align="center">iAmasters OS</h1>
 
-[![Version](https://img.shields.io/badge/version-v0.4.0-orange.svg)](https://github.com/angelapaia/iamasters-os/releases)
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![Powered by Sinapsis](https://img.shields.io/badge/engine-Sinapsis%20v4.5-purple.svg)](vendor/sinapsis/)
-[![Maintained by Angel Aparicio](https://img.shields.io/badge/maintained%20by-Angel%20Aparicio-ff8c42.svg)](https://angelaparicio.com)
-[![iAmasters Academy](https://img.shields.io/badge/by-iAmasters%20Academy-b794f4.svg)](https://www.skool.com/ia-masters-automations)
+<p align="center">
+  <em>El sistema operativo agéntico para operadores de IA.<br>
+  Castellano. Multi-cliente. Con memoria que evoluciona.</em>
+</p>
+
+<p align="center">
+  <a href="https://github.com/iamasters-academy/iamasters-os/releases"><img src="https://img.shields.io/badge/version-v0.4.2-orange.svg" alt="Version"></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
+  <a href="vendor/sinapsis/"><img src="https://img.shields.io/badge/engine-Sinapsis%20v4.5-purple.svg" alt="Powered by Sinapsis"></a>
+  <a href="https://angelaparicio.com"><img src="https://img.shields.io/badge/maintained%20by-Angel%20Aparicio-ff8c42.svg" alt="Maintained by Angel Aparicio"></a>
+  <a href="https://www.skool.com/ia-masters-automations"><img src="https://img.shields.io/badge/by-IA%20Masters%20Academy-b794f4.svg" alt="IA Masters Academy"></a>
+</p>
 
 ---
 
@@ -40,7 +48,7 @@ No requiere conocimientos de programación, sí requiere paciencia para configur
 ## Instalación rápida
 
 ```bash
-git clone https://github.com/iamasters/iamasters-os.git
+git clone https://github.com/iamasters-academy/iamasters-os.git
 cd iamasters-os
 bash scripts/install.sh
 ```
@@ -139,24 +147,27 @@ iAmasters OS es código abierto bajo MIT. Las contribuciones bienvenidas:
 
 ## Sobre el proyecto
 
-**iAmasters OS** es propiedad de **Angel Aparicio** y forma parte del ecosistema de productos de **[iAmasters Academy](https://www.skool.com/ia-masters-automations)**, la comunidad de operadores de IA en castellano.
+**iAmasters OS** es propiedad de **Angel Aparicio** y forma parte del ecosistema de productos de **[IA Masters Academy](https://www.skool.com/ia-masters-automations)**, la comunidad de operadores de IA en castellano.
 
 | | |
 |---|---|
 | **Autor y mantenedor** | Angel Aparicio |
-| **Afiliación** | iAmasters Academy |
+| **Marca** | IA Masters Academy |
+| **Empresa legal** | AASC Associates |
 | **Web personal** | [angelaparicio.com](https://angelaparicio.com) |
+| **LinkedIn** | [angel-aparicio92](https://www.linkedin.com/in/angel-aparicio92/) |
 | **GitHub** | [@angelapaia](https://github.com/angelapaia) |
+| **GitHub Org** | [@iamasters-academy](https://github.com/iamasters-academy) |
 | **Comunidad** | [skool.com/ia-masters-automations](https://www.skool.com/ia-masters-automations) |
-| **Email** | angel.aparicio92@gmail.com |
-| **Año** | 2026 |
+| **Email** | aaparicio@iamastersacademy.com |
+| **Año** | 2025-2026 |
 
 ### Cómo citar
 
 Si usas iAmasters OS en tu trabajo, proyecto o publicación, agradecemos la citación. Ver [`CITATION.cff`](CITATION.cff) para el formato estructurado. Referencia rápida:
 
-> Aparicio, A. (2026). *iAmasters OS* [Software]. iAmasters Academy.
-> https://github.com/angelapaia/iamasters-os
+> Aparicio, A. (2025-2026). *iAmasters OS* [Software]. IA Masters Academy.
+> https://github.com/iamasters-academy/iamasters-os
 
 ### Code ownership
 
@@ -164,7 +175,9 @@ Este repositorio sigue el modelo CODEOWNERS de GitHub. Cualquier PR requiere rev
 
 ### Marca
 
-"iAmasters Academy", "iAmasters OS" y los logos relacionados son propiedad de Angel Aparicio. El código fuente se publica bajo licencia MIT (libre uso/modificación), pero el uso de la marca y los logos requiere autorización explícita.
+"IA Masters Academy", "iAmasters OS" y el logo del camaleón son marcas registradas de **AASC Associates · Angel Aparicio**. El código fuente se publica bajo licencia MIT (libre uso/modificación), pero el uso de la marca y los logos requiere autorización explícita por escrito.
+
+Para uso de marca, contactar: aaparicio@iamastersacademy.com
 
 ## Licencia
 

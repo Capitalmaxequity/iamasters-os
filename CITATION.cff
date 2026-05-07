@@ -5,14 +5,13 @@ type: software
 authors:
   - family-names: Aparicio
     given-names: Angel
-    affiliation: "iAmasters Academy"
-    orcid: ""
-    email: "angel.aparicio92@gmail.com"
+    affiliation: "IA Masters Academy (AASC Associates)"
+    email: "aaparicio@iamastersacademy.com"
     website: "https://angelaparicio.com"
     alias: "angelapaia"
 identifiers: []
-repository-code: "https://github.com/angelapaia/iamasters-os"
-url: "https://github.com/angelapaia/iamasters-os"
+repository-code: "https://github.com/iamasters-academy/iamasters-os"
+url: "https://github.com/iamasters-academy/iamasters-os"
 abstract: >-
   Sistema operativo agéntico para operadores de IA. Combina Sinapsis v4.5
   (engine de memoria persistente) con una capa OS que añade brand context,
@@ -27,21 +26,23 @@ keywords:
   - multi-client
   - brand-voice
   - castellano
+  - iamasters
+  - iamasters-academy
 license: MIT
-license-url: "https://github.com/angelapaia/iamasters-os/blob/main/LICENSE"
-version: "0.4.0"
+license-url: "https://github.com/iamasters-academy/iamasters-os/blob/main/LICENSE"
+version: "0.4.2"
 date-released: "2026-05-07"
 preferred-citation:
   type: software
   authors:
     - family-names: Aparicio
       given-names: Angel
-      affiliation: "iAmasters Academy"
+      affiliation: "IA Masters Academy"
   title: "iAmasters OS"
-  year: 2026
-  url: "https://github.com/angelapaia/iamasters-os"
+  year: "2025-2026"
+  url: "https://github.com/iamasters-academy/iamasters-os"
   publisher:
-    name: "iAmasters Academy"
+    name: "IA Masters Academy"
 references:
   - type: software
     title: "Sinapsis"
