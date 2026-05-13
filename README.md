@@ -75,7 +75,7 @@ No requiere conocimientos de programación. Sí requiere paciencia para configur
 | Concepto | Coste | Cuándo se paga |
 |---|---|---|
 | iAmasters OS (este repo) | **Gratis** (MIT) | Nunca |
-| Membresía iAmasters Academy | $79/mes o $497/año | Si quieres la comunidad y formación. **No** es necesaria para usar el OS |
+| Membresía iAmasters Academy | (ver web) | Si quieres la comunidad y formación. **No** es necesaria para usar el OS |
 | Claude Desktop app | Gratis (descarga) | Nunca |
 | **Anthropic Pro** | **$20/mes** | Mínimo necesario para que el OS funcione bien |
 | **Anthropic Max** | $100-200/mes | Si vas a usar mucho Cowork o sesiones largas de Code |
@@ -83,7 +83,7 @@ No requiere conocimientos de programación. Sí requiere paciencia para configur
 
 **Conclusión**: el coste mínimo realista para empezar bien es **$20/mes de Anthropic Pro**. Con plan Free los modelos buenos no llegan y el OS se siente roto.
 
-> Si vienes de iAmasters Academy: tu membresía $79 NO incluye Anthropic. Son cuentas separadas. Lo decimos claro porque otros productos lo esconden.
+> Si vienes de iAmasters Academy: tu membresía NO incluye Anthropic. Son cuentas separadas. Lo decimos claro porque otros productos lo esconden.
 
 ## Instalación alternativa (sin prompt conversacional)
 
