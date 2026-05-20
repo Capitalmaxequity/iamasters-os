@@ -48,7 +48,7 @@ Antes de responder al primer mensaje del usuario en este repo, **debes** comprob
 - **Commands del OS**: `.claude/commands/`
 - **Brand context**: `brand-context/` (voice, positioning, ICP, assets)
 - **Agent context sectorizado**: `context/` (me.md, work.md, team.md, current-priorities.md, goals.md, decisions-log.md, learnings.md, soul.md)
-- **Proyectos**: `projects/` (`projects/briefs/<nombre>/`, `projects/welcome/`, `projects/six-hats/`, `projects/visual/`)
+- **Proyectos**: `projects/` (`projects/briefs/<nombre>/`, `projects/welcome/`, `projects/seis-sombreros/`, `projects/metodo-ias/`, `projects/visual/`)
 - **Clientes**: `clients/<nombre>/` (con `clients/_templates/` para nuevos)
 - **Docs operativos**: `docs/`
 - **Scripts del installer**: `scripts/install.sh`, `scripts/_install-gate.sh`, `scripts/_install-state.template.json`
@@ -124,9 +124,9 @@ Lo que aporta este repo encima de Sinapsis:
 
 ---
 
-## Skills registry (v0.6.0)
+## Skills registry (v0.7.0)
 
-Capa 1 = 23 skills core + 1 opcional.
+Capa 1 = 25 skills core + 1 opcional.
 
 ### `_meta/` — sistema (10)
 
@@ -138,7 +138,7 @@ Capa 1 = 23 skills core + 1 opcional.
 | `meta-start-here` | Ritual diario de inicio |
 | `meta-wrap-up` | Ritual diario de cierre |
 | `welcome-quick-win` | Primer entregable en 5 min |
-| `six-hats` | Método 6 sombreros |
+| `seis-sombreros` | Seis sombreros de De Bono con **anti-ancla, 7 variantes, marcos divergentes y matriz de decisión** (v0.7) |
 | `decisions-log` | Diario append-only de decisiones |
 | `health-check` | Diagnóstico del OS con **validación profunda y detección de drift** (v0.6) |
 | `find-skills` | Descoverabilidad por intent |
@@ -167,19 +167,21 @@ Capa 1 = 23 skills core + 1 opcional.
 | `automation-n8n-to-claude` | Migra workflows n8n al ecosistema Claude |
 | `automation-n8n-builder` | Crea workflows n8n vía MCP `n8n-mcp` |
 
-### `strategy/` (1)
+### `strategy/` (2)
 
 | Skill | Descripción |
 |---|---|
+| `metodo-ias` | Método I.A.S. (Intención · Acción · Síntesis) anti-AI-brain-fry — diario + semanal (v0.7) |
 | `strategy-web-research` | Research con subagentes |
 
-### `tools/` (3)
+### `tools/` (4)
 
 | Skill | Descripción |
 |---|---|
 | `tool-firecrawl-scraper` | Wrapper Firecrawl |
 | `tool-humanizer` | Quita patrones AI-tell |
 | `tool-output-verifier` | Gate de calidad |
+| `tool-zoom-summary` | Resumen HTML interactivo de reuniones Zoom (transcripción + chat + topics + recursos) (v0.7) |
 
 ### `visualization/` (1)
 

@@ -10,7 +10,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/iamasters-academy/iamasters-os/releases"><img src="https://img.shields.io/badge/version-v0.6.0-orange.svg" alt="Version"></a>
+  <a href="https://github.com/iamasters-academy/iamasters-os/releases"><img src="https://img.shields.io/badge/version-v0.7.0-orange.svg" alt="Version"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="License"></a>
   <a href="vendor/sinapsis/"><img src="https://img.shields.io/badge/engine-Sinapsis%20v4.5-purple.svg" alt="Powered by Sinapsis"></a>
   <a href="https://angelaparicio.com"><img src="https://img.shields.io/badge/maintained%20by-Angel%20Aparicio-ff8c42.svg" alt="Maintained by Angel Aparicio"></a>
@@ -138,7 +138,7 @@ _meta/                            Sistema y rituales del OS
 ├── meta-start-here               Ritual diario de inicio
 ├── meta-wrap-up                  Ritual diario de cierre
 ├── welcome-quick-win             Tu primer entregable garantizado en 5 min
-├── six-hats                      Método 6 sombreros de De Bono
+├── seis-sombreros                Método 6 sombreros de De Bono con anti-ancla y 7 variantes (v0.7)
 ├── decisions-log                 Diario append-only inspirado en second-brain
 ├── health-check                  Diagnóstico (vía `/doctor`)
 └── find-skills                   Descoverabilidad por intent en lenguaje natural
@@ -155,13 +155,15 @@ automation/                       🆕 Automatización y migración
 ├── automation-n8n-to-claude      Migra workflows n8n al ecosistema Claude
 └── automation-n8n-builder        Crea workflows n8n desde Claude (vía MCP n8n-mcp)
 
-strategy/                         🆕 Investigación y estrategia
+strategy/                         Investigación, estrategia y metodologías
+├── metodo-ias                    🆕 Método I.A.S. (Intención · Acción · Síntesis) anti-AI-brain-fry (v0.7)
 └── strategy-web-research         Research profundo multi-fuente (LangChain)
 
 tools/                            Utilidades transversales
 ├── tool-firecrawl-scraper        Wrapper Firecrawl con fallback manual
 ├── tool-humanizer                Quita patrones AI-tell del output
-└── tool-output-verifier          Gate de calidad (humanizer + voice + length)
+├── tool-output-verifier          Gate de calidad (humanizer + voice + length)
+└── tool-zoom-summary             🆕 Resumen HTML interactivo de reuniones Zoom (v0.7)
 
 visualization/                    Outputs compartibles
 └── tool-visual-explainer         Genera HTML autocontenido compartible
@@ -238,7 +240,7 @@ Ver [`CHANGELOG.md`](CHANGELOG.md) para historial detallado.
 - **v0.4.3** ✅ Plug-and-play (URL conversacional, /doctor, welcome quick-win, six-hats, decisions-log, sectorización context)
 - **v0.5.0** ✅ Sistema vivo + skills automation/email/strategy + comando `/aprende` (tour de 5 días) + showcase pre-poblado + plugins Anthropic vía marketplace
 - **v0.6.0** ✅ **Install gate** con state machine persistente, validación profunda anti-"instalación fantasma", hook SessionStart, onboarding por sub-fases con commits incrementales, comandos `/install` y `/install-status`, detección Python multi-plataforma
-- **v0.7.0** — Skills nativas en español (meeting-notes, proposal-writer, youtube-transcript, linkedin-posts) reescritas con voice profile del operador
+- **v0.7.0** ✅ Skills nativas en español: `seis-sombreros` (renombre + reescritura completa con anti-ancla y 7 variantes), `metodo-ias` (método I.A.S. propio para sesiones agénticas), `tool-zoom-summary` (resumen HTML interactivo de reuniones Zoom)
 - **v1.0.0** — release pública estable + vídeos Loom integrados + landing en iamastersacademy.com/os
 
 ## 🌱 Sistema vivo

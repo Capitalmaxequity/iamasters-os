@@ -9,9 +9,38 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 ## [Unreleased]
 
 ### Próximas versiones (en backlog)
-- v0.7.0: skills nativas en español (meeting-notes, proposal-writer, youtube-transcript, linkedin-posts) reescritas con voice profile del operador
-- v0.8.0: dashboard del OS (pendiente decidir si se integra con dashboard Sinapsis)
+- v0.8.0: skills nativas en español adicionales (proposal-writer, youtube-transcript, linkedin-posts) reescritas con voice profile del operador
+- v0.9.0: dashboard del OS (pendiente decidir si se integra con dashboard Sinapsis)
 - v1.0.0: release pública estable + vídeos Loom integrados + landing en iamastersacademy.com/os
+
+---
+
+## v0.7.0 — Skills nativas: `seis-sombreros`, `metodo-ias`, `tool-zoom-summary` (2026-05-20)
+
+> **Por qué esta release**: cerrar la promesa de v0.7 sobre skills nativas en español con tres incorporaciones de alto valor para el ICP del OS. Dos son contribuciones originales del maintainer (método I.A.S. y reescritura rigurosa de seis-sombreros con sistema anti-ancla), una traslada al OS una herramienta de uso semanal probado (resumen de reuniones Zoom). Todas pasan por adaptación multi-cliente: sin paths personales, sin referencias a stacks específicos del autor, sin glosarios privados.
+
+### Added — skills nuevas
+
+- **`_meta/seis-sombreros`** (nueva, reemplaza a `six-hats`) — implementación operativa de los 6 sombreros de De Bono con dos capas: (1) Fase 0 anti-ancla obligatoria con 4 movimientos (reformulación pura, asunción fundacional, steel-man del opuesto, pre-mortem rápido), y (2) sombreros con aislamiento estricto. Incluye 7 variantes de orden según tipo de problema (`references/variants.md`), catálogo de 10 marcos divergentes para el sombrero verde (`references/divergence-frameworks.md`), checklist anti-entrega y matriz de decisión operacionalizable en la síntesis. Mantiene integraciones con `tool-visual-explainer`, `decisions-log` y `projects/seis-sombreros/`.
+
+- **`strategy/metodo-ias`** (nueva) — método I.A.S. (Intención · Acción · Síntesis) para operar con IA agéntica sin AI brain fry. Dos modos: diario (planificación previa con checklist verde/rojo y decisiones congeladas) y semanal (recap macro con inventario, Pareto 80/20, boundary erosion, recalibración de techo y delegables). Incluye protocolos completos en `protocolos/` y stubs de comandos `/ias-start` y `/ias-recap`. Salidas en `projects/metodo-ias/diarios/` y `projects/metodo-ias/semanales/`.
+
+- **`tools/tool-zoom-summary`** (nueva) — genera un HTML interactivo premium a partir de una reunión de Zoom. Pipeline en 7 fases: FETCH (lista de grabaciones) → DETECT (mapping configurable de tipos de reunión vía `brand-context/meeting-types.md`) → DOWNLOAD (transcripción VTT + chat) → ANALYZE (parse + topic analysis + mini-resumen + resources) → GLOSSARY PASS (corrección de errores STT con glosario del operador en `brand-context/glossary.json`) → GENERATE (HTML con timestamps clickables) → SAVE + entregables de texto (títulos, descripción larga, mini-resumen para comunidad).
+
+### Changed — archivado controlado
+
+- **`_meta/six-hats/`** movida a `_meta/_archived/six-hats-2026-05-20/`. No se borra — se conserva como referencia histórica de la v0.4.3. El reemplazo (`seis-sombreros`) cubre el mismo caso de uso con mucho más rigor (anti-ancla, variantes, marcos divergentes, matriz de decisión).
+
+### Changed — registry y atribución
+
+- **README.md** actualizado: badge a v0.7.0, árbol de skills con tres entradas nuevas marcadas con 🆕 y nota de versión.
+- **CLAUDE.md** del repo: tabla de skills registry actualizada con `seis-sombreros` reemplazando `six-hats`, `metodo-ias` en `strategy/`, y `tool-zoom-summary` en `tools/`. Conteo actualizado a 25 skills core.
+- **CITATION.cff** bumpeada a 0.7.0 (2026-05-20).
+
+### Notas operativas
+
+- Las tres skills nuevas se diseñaron para multi-cliente desde el principio: paths configurables, sin asunciones sobre el stack del operador, sin referencias a marcas o cuentas privadas.
+- `seis-sombreros` cambia el nombre canónico al español (coherente con el ICP hispanohablante del OS). Si una skill o agente externo invocaba `six-hats`, debe actualizarse a `seis-sombreros`.
 
 ---
 
