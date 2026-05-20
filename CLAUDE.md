@@ -111,7 +111,7 @@ Lo que aporta este repo encima de Sinapsis:
 - `me.md`, `work.md`, `team.md`, `current-priorities.md`, `goals.md`
 - `learnings.md`, `decisions-log.md`
 
-**Skills curadas (`.claude/skills/`)** — 23 skills core (ver registry abajo).
+**Skills curadas (`.claude/skills/`)** — 25 skills core (ver registry abajo).
 
 **Niveles de proyecto**:
 1. **Single task** — pregunta directa. Output a `projects/<skill-name>/<fecha>-<titulo>/`.

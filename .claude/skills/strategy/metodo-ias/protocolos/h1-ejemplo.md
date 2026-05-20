@@ -1,6 +1,6 @@
 # H1 — Sesión end-to-end (ejemplo)
 
-> Caso ficticio realista. Un operador genérico de la comunidad Camaleones prepara un activo concreto.
+> Caso ficticio realista. Un operador genérico que usa el método I.A.S. prepara un activo concreto.
 > Activo a producir: pitch deck de 12 slides para una reunión con un inversor pre-seed.
 > Fecha de la sesión: 2026-05-06.
 

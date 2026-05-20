@@ -15,6 +15,23 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## v0.7.1 — Patch · multi-cliente cleanup + drift fixes (2026-05-20)
+
+> **Por qué este patch**: tras ejecutar un test controlado de instalación con `$HOME` aislado (simulando un usuario nuevo), aparecieron 3 bugs que no se vieron en review: las `references/` de `tool-zoom-summary` se copiaron sin limpiar y conservaban nombres de reuniones específicas + marca personal del maintainer; el template del state machine no se bumpeó con la release; y el `CLAUDE.md` mantenía un conteo viejo de skills. Los 3 son menores en código pero rompen la promesa de "multi-cliente" del OS, así que se corrigen como patch independiente.
+
+### Fixed
+
+- **`tools/tool-zoom-summary/references/color_schemes.md`** reescrito como catálogo neutro de 4 esquemas (`Warm Professional`, `Business Clean`, `Techy Modern`, `AI Future`). Eliminados los nombres de reuniones específicas del autor. El mapping topic→esquema ahora se documenta en `brand-context/meeting-types.md` del operador.
+- **`tools/tool-zoom-summary/references/html_template_guide.md`** — footer del template ya no hardcodea marca ni URL del autor. Las variables `{{BRAND_NAME}}`, `{{BRAND_WEBSITE}}` y `{{TIMEZONE}}` se resuelven desde `brand-context/identity.md`. Ejemplo del parser de chat usa nombre genérico.
+- **`scripts/_install-state.template.json`** — campo `version` bumpeado de `"0.6.0"` a `"0.7.1"`. Antes, el state machine generado por `install.sh` reportaba la versión equivocada, rompiendo la trazabilidad de qué versión del OS había instalado el usuario.
+- **`CLAUDE.md`** — sección "Capa OS" decía "23 skills core" cuando el registry abajo decía 25. Corregido a 25.
+
+### Test coverage
+
+Patch validado con re-ejecución del test controlado (`$HOME` aislado, clone fresco desde GitHub, `bash scripts/install.sh`, auditoría estructural de las 25 skills, validación del install gate, smoke test de las 3 skills nuevas). Confirmado: 0 referencias residuales al stack/marca del autor en las skills genéricas, state machine reporta v0.7.1, conteo coherente en toda la documentación.
+
+---
+
 ## v0.7.0 — Skills nativas: `seis-sombreros`, `metodo-ias`, `tool-zoom-summary` (2026-05-20)
 
 > **Por qué esta release**: cerrar la promesa de v0.7 sobre skills nativas en español con tres incorporaciones de alto valor para el ICP del OS. Dos son contribuciones originales del maintainer (método I.A.S. y reescritura rigurosa de seis-sombreros con sistema anti-ancla), una traslada al OS una herramienta de uso semanal probado (resumen de reuniones Zoom). Todas pasan por adaptación multi-cliente: sin paths personales, sin referencias a stacks específicos del autor, sin glosarios privados.

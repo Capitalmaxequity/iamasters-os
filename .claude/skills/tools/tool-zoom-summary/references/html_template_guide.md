@@ -162,15 +162,25 @@ Exception: semantic colors (--green, --red, --blue, --purple) stay fixed across 
 ```
 
 ### FOOTER
+
+El footer toma todos los datos del `brand-context/` del operador. NUNCA hardcodear marca, herramienta IA o URL en el HTML público.
+
 ```html
 <div class="footer">
   <div class="container">
-    <p style="color: var(--accent); font-weight: 700;">{{MEETING_NAME}} — iAmasters Automations</p>
-    <p>{{DAY_NAME}} {{DATE_LONG}} · {{TIME}} (Europe/Madrid)</p>
-    <p style="font-size: 12px;">Generado con Claude Code · angelaparicio.com</p>
+    <p style="color: var(--accent); font-weight: 700;">{{MEETING_NAME}} — {{BRAND_NAME}}</p>
+    <p>{{DAY_NAME}} {{DATE_LONG}} · {{TIME}} ({{TIMEZONE}})</p>
+    <p style="font-size: 12px;">{{BRAND_WEBSITE}}</p>
   </div>
 </div>
 ```
+
+Variables a resolver desde `brand-context/`:
+- `{{BRAND_NAME}}` — `brand-context/identity.md` → `name`
+- `{{BRAND_WEBSITE}}` — `brand-context/identity.md` → `website`
+- `{{TIMEZONE}}` — `brand-context/identity.md` → `timezone` (ej. `Europe/Madrid`, `America/Mexico_City`)
+
+Si alguna variable falta en `brand-context/`, omitir esa línea del footer (no inventar valores).
 
 ## Timestamp Link Format
 
@@ -217,7 +227,7 @@ Parse into segments: `[{start_seconds, end_seconds, speaker, text}]`
 
 Zoom chat TXT format:
 ```
-18:02:15 From  Angel Aparicio  to  Everyone:
+18:02:15 From  Alex Doe  to  Everyone:
 	https://claude.ai
 18:05:22 From  Maria Garcia  to  Everyone:
 	Genial, gracias!
@@ -275,7 +285,7 @@ should be adapted by replacing hardcoded `rgba(196,149,106,X)` values with:
 - `rgba(196,149,106,0.25)` → increase opacity variant of --accent-border
 - `#C4956A` / `var(--accent)` stays as `var(--accent)`
 
-For Forja de Camaleones, code-related elements additionally use:
+For schemes that pair `--accent` with `--cyan` as secondary (Techy Modern, AI Future), code-related elements additionally use:
 - Background: `rgba(77,208,225,0.08)`
 - Border: `rgba(77,208,225,0.15)`
 - Text: `var(--cyan)`

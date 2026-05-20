@@ -1,6 +1,6 @@
 # H2 — Ejemplo end-to-end
 
-> Caso ficticio realista. Una semana de un operador freelance/consultor genérico de la comunidad Camaleones.
+> Caso ficticio realista. Una semana de un operador freelance/consultor genérico que usa el método I.A.S.
 > Semana 2026-W19, ejecutada el viernes 8 de mayo de 2026 por la tarde.
 
 ---
