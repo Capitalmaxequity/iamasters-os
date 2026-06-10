@@ -1,6 +1,6 @@
 ---
 name: marketing-positioning
-description: Construye o refina el posicionamiento del operador. Analiza competidores (con tool-firecrawl-scraper), identifica hueco de mercado, propone 3-5 ángulos de posicionamiento y deja al operador elegir. Output a brand-context/positioning/positioning.md. Se invoca tras brand-voice o cuando el operador siente que el mensaje no diferencia.
+description: Construye o refina el posicionamiento del operador. Úsala cuando el usuario diga o pida "posicionamiento", "cómo me diferencio", "qué me hace distinto", "mi mensaje no diferencia", "ángulo de posicionamiento", "propuesta de valor", o sienta que suena igual que la competencia. Analiza competidores (con tool-firecrawl-scraper), identifica hueco de mercado, propone 3-5 ángulos de posicionamiento y deja al operador elegir. Output a brand-context/positioning/positioning.md. También se invoca tras brand-voice.
 ---
 
 # marketing-positioning

@@ -1,6 +1,6 @@
 ---
 name: marketing-icp
-description: Define el Ideal Customer Profile en detalle: dolor exacto, lenguaje que usa, buying triggers, anti-ICP. Combina interview con análisis de competidores (qué clientes tienen) y de testimonios reales del operador. Output a brand-context/icp/icp.md. Se invoca después de positioning o cuando el operador no sabe a quién venderle.
+description: Define el Ideal Customer Profile en detalle: dolor exacto, lenguaje que usa, buying triggers, anti-ICP. Úsala cuando el usuario diga o pida "a quién le vendo", "cliente ideal", "ICP", "mi público objetivo", "perfil de cliente", "buyer persona", o no tenga claro a quién dirigirse. Combina interview con análisis de competidores (qué clientes tienen) y de testimonios reales del operador. Output a brand-context/icp/icp.md. También se invoca después de positioning.
 ---
 
 # marketing-icp

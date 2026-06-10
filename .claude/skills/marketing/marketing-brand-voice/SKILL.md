@@ -1,7 +1,7 @@
 ---
 name: marketing-brand-voice
 version: 2.0.0
-description: Genera el voice profile completo del operador con 3 registros (A formal, B divulgativo, C cercano). Mecánica de doble ruta (artefactos reales o simulación guiada) que captura voz auténtica incluso si el operador no tiene presencia online. Combina interview directa + Firecrawl scraping de URLs públicas + 5 simulaciones por registro. Output a brand-context/voice/ con 8 archivos: voice-profile.md, samples.md, register-{a,b,c}.md, audit-prompt.md, vocabulary.md, installation.md. Lo invoca el onboarding wizard tras la identidad.
+description: Genera el voice profile completo del operador con 3 registros (A formal, B divulgativo, C cercano). Úsala cuando el usuario diga o pida "trabaja mi voz de marca", "define mi tono", "brand voice", "cómo sueno", "mi estilo de escritura", "perfil de voz", o quiera capturar/refinar cómo escribe. Mecánica de doble ruta (artefactos reales o simulación guiada) que captura voz auténtica incluso si el operador no tiene presencia online. Combina interview directa + Firecrawl scraping de URLs públicas + 5 simulaciones por registro. Output a brand-context/voice/ con 8 archivos: voice-profile.md, samples.md, register-{a,b,c}.md, audit-prompt.md, vocabulary.md, installation.md. También la invoca el onboarding wizard tras la identidad.
 ---
 
 # marketing-brand-voice · v2.0

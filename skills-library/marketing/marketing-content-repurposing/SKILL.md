@@ -1,6 +1,6 @@
 ---
 name: marketing-content-repurposing
-description: Convierte una pieza fuente (video YouTube, podcast, transcript reunión, blog largo) en 5-8 piezas multiplataforma respetando brand voice. Output paquete con LinkedIn post + X thread + email newsletter + Instagram caption + clips ideas + headlines blog. Invoca marketing-copywriting por cada pieza y tool-output-verifier como gate.
+description: Convierte una pieza fuente (video YouTube, podcast, transcript reunión, blog largo) en 5-8 piezas multiplataforma respetando brand voice. Úsala cuando el usuario diga o pida "convierte este vídeo/podcast/transcript/post en piezas", "repurposing", "saca contenido de…", "distribuye esto en varias plataformas", "trocea esto para redes", o aporte una pieza larga para reaprovechar. Output paquete con LinkedIn post + X thread + email newsletter + Instagram caption + clips ideas + headlines blog. Invoca marketing-copywriting por cada pieza y tool-output-verifier como gate.
 ---
 
 # marketing-content-repurposing

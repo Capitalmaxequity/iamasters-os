@@ -1,6 +1,6 @@
 ---
 name: marketing-copywriting
-description: Genera copy para una plataforma específica (LinkedIn post, X thread, email, landing section, ad) usando brand-voice y registers A/B/C automáticamente. Pasa por tool-output-verifier obligatoriamente antes de entregar. Devuelve 1-3 variaciones para que el operador elija. La skill estrella del módulo marketing.
+description: Genera copy para una plataforma específica (LinkedIn post, X thread, email, landing section, ad) usando brand-voice y registers A/B/C automáticamente. Úsala cuando el usuario diga o pida "escríbeme/redacta/hazme un post de LinkedIn", "un tweet" o "un hilo de X", "un email", "un anuncio", "una sección de landing", "un headline", "copy para…", o pida cualquier texto de marketing para una plataforma. Pasa por tool-output-verifier obligatoriamente antes de entregar. Devuelve 1-3 variaciones para que el operador elija. La skill estrella del módulo marketing.
 ---
 
 # marketing-copywriting
