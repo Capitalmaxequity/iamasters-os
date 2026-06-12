@@ -456,12 +456,34 @@ validate_sinapsis_deep() {
     return $issues
 }
 
+record_sinapsis_validation() {
+    # Escribe los resultados REALES de cada check en el state, para que
+    # /install-status y el gate muestren la verdad (no los defaults del
+    # template, que son false y confunden al usuario).
+    local op_valid=false cat_valid=false hooks_ok=true
+    if [ -f "$SKILLS_DIR/_operator-state.json" ] && json_validate "$SKILLS_DIR/_operator-state.json"; then
+        op_valid=true
+    fi
+    if [ -f "$SKILLS_DIR/_catalog.json" ] && json_validate "$SKILLS_DIR/_catalog.json"; then
+        cat_valid=true
+    fi
+    local hook
+    for hook in _passive-activator.sh _instinct-activator.sh _session-learner.sh; do
+        [ -x "$SKILLS_DIR/$hook" ] || hooks_ok=false
+    done
+    local skill_count
+    skill_count=$(find "$SKILLS_DIR" -maxdepth 3 -name "SKILL.md" 2>/dev/null | wc -l | tr -d ' ')
+    json_set_phase "sinapsis-engine" "validation" \
+        "{\"operator_state_json_valid\": $op_valid, \"catalog_json_valid\": $cat_valid, \"hooks_executable\": $hooks_ok, \"skills_count\": ${skill_count:-0}}"
+}
+
 phase_sinapsis_engine() {
     local current_status
     current_status=$(json_get_phase_status "sinapsis-engine")
     if [ "$current_status" = "done" ] && ! $FORCE_REINSTALL; then
         # Aún así re-validamos para detectar drift (alguien borró archivos manualmente)
         if validate_sinapsis_deep >/dev/null 2>&1; then
+            record_sinapsis_validation
             skip "sinapsis-engine · ya instalado y validado (status=done)"
             return 0
         else
@@ -489,6 +511,7 @@ phase_sinapsis_engine() {
     info "Comprobando si Sinapsis ya está operativo..."
     if validate_sinapsis_deep >/dev/null 2>&1; then
         ok "Sinapsis ya está operativo (validación profunda pasa)"
+        record_sinapsis_validation
         compute_and_store_checksum
         mark_phase_done "sinapsis-engine"
         return 0
@@ -507,9 +530,11 @@ phase_sinapsis_engine() {
     # Validación POST-instalación (esto es lo que evita "instalaciones fantasma")
     info "Validando instalación de Sinapsis (validación profunda)..."
     if ! validate_sinapsis_deep; then
+        record_sinapsis_validation
         mark_phase_failed "sinapsis-engine" "Sinapsis se ejecutó pero la validación profunda falla · ver warnings arriba"
     fi
 
+    record_sinapsis_validation
     compute_and_store_checksum
     mark_phase_done "sinapsis-engine"
     ok "Sinapsis instalado y validado"

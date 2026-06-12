@@ -13,7 +13,28 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 - **Team OS** — memoria/permisos compartidos para equipo. Módulo AVANZADO opcional (no core), decisión de negocio pendiente. (Antes etiquetado como v0.9.0; re-planificado al dedicar la v0.9.0 a Loop Engineering.)
 - Skills nativas en español adicionales (proposal-writer, youtube-transcript, linkedin-posts) con voice profile del operador.
 - Dashboard del OS (pendiente decidir si se integra con dashboard Sinapsis).
+- Onboarding con extracción desde URL (web/LinkedIn del operador → brand-context automático vía Firecrawl).
+- Loops desatendidos (ejecución programada sin sesión abierta) — decisión pendiente para v1.0.
+- Test end-to-end de instalación en máquina limpia antes de v1.0.
 - v1.0.0: release pública estable + vídeos Loom + landing en iamastersacademy.com/os.
+
+---
+
+## [0.9.2] — 2026-06-12
+
+**Resilience pack.** El OS se respalda, se actualiza y se recupera solo: `/backup` a iCloud/Dropbox, `/restaura` como botón de deshacer de `/actualiza`, updates no-interactivos que nunca pisan lo del operador, y state de instalación que siempre dice la verdad.
+
+### Added
+- **`/backup`** (`scripts/backup.sh`) — copia de seguridad de todo lo irreemplazable del operador (context, brand-context, projects, clients, loops, .env, skills propias + memoria Sinapsis global: operator-state, instincts, daily summaries). Destino automático: iCloud → Dropbox → `~/iAmasters-Backup/` (override con `IAMASTERS_BACKUP_DIR` en `.env`). Rotación: últimos 7. `/wrap-up` lo sugiere si el último backup tiene >7 días.
+- **`/restaura`** (`scripts/rollback.sh`) — botón de deshacer de `/actualiza`: devuelve código Y datos al estado previo a la última actualización. Antes de restaurar guarda snapshot del estado actual (`.backup/pre-rollback-*`), así el rollback también es reversible. `update.sh` ahora escribe `META.txt` (commit pre-update) en cada backup.
+- **Convención `SKILL.local.md`** — personalizaciones del operador sobre skills curadas en archivo aparte (gitignored): sobreviven a `/actualiza` sin conflictos. El agente lo lee tras el `SKILL.md` y sus reglas mandan. (Patrón inspirado en agentic-os de Simon C.)
+
+### Fixed
+- `scripts/update.sh` — un fetch fallido quedaba enmascarado por el pipe a `tail` y `git rev-parse` sin `--verify` devolvía el nombre del ref inexistente: el script creía que había cambios upstream y abortaba a mitad con un error críptico. Ahora distingue "rama no está en origin" (update local-only, exit limpio) de "sin conexión/permisos" (error claro).
+
+### Changed
+- `scripts/update.sh` — modo no-interactivo automático cuando no hay TTY (p. ej. lanzado por Claude vía `/actualiza`): nunca pregunta, mantiene la versión local ante cualquier conflicto y lista "Pendientes de decisión" al final para resolverlos conversacionalmente. Antes, los prompts interactivos colgaban el flujo "sin terminal". Además ya no pisa archivos con cambios locales sin commitear.
+- `scripts/install.sh` — la validación profunda de `sinapsis-engine` ahora escribe los resultados reales de cada check en `_install-state.json` (antes quedaban los `false` del template aunque todo pasara, confundiendo a `/install-status` y al gate).
 
 ---
 

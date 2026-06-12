@@ -95,6 +95,10 @@ bash scripts/update.sh
 
 `update.sh` preserva SIEMPRE lo del operador (skills propias, `brand-context/`, `context/`, `projects/`, `clients/`, `loops/`); solo actualiza el código del OS, las skills curadas y Sinapsis vendored. Si `git pull` falla por cambios locales, NO fuerces: explica qué tiene modificado y pregunta. Al terminar, resume lo nuevo desde el `CHANGELOG.md`.
 
+Cuando lo lanzas tú (sin terminal del usuario), `update.sh` detecta que no hay TTY y entra en modo no-interactivo: nunca pregunta, mantiene la versión local ante cualquier conflicto y lista al final los "Pendientes de decisión". Resuélvelos conversacionalmente con el usuario (enséñale qué cambia cada archivo y aplica lo que decida con `git checkout origin/<branch> -- <archivo>`).
+
+**Si tras actualizar algo se rompe** → `/restaura` (rollback completo al estado anterior: código + datos). Cada update deja backup automático en `.backup/`.
+
 ---
 
 ## Sobre el sistema
@@ -141,7 +145,7 @@ Lo que aporta este repo encima de Sinapsis:
 
 ---
 
-## Skills registry (v0.9.1)
+## Skills registry (v0.9.2)
 
 Capa 1 = 35 skills core + 2 opcionales (cognito, arnes).
 
@@ -225,7 +229,7 @@ Capa 1 = 35 skills core + 2 opcionales (cognito, arnes).
 
 ### Slash commands
 
-`/install` · `/install-status` · `/start-here` · `/wrap-up` · `/doctor` · `/actualiza` · `/add-client` · `/install-skill` · `/install-mcp` · `/aprende` · `/deep-dive` · `/recuerda` · `/loops` · `/evalua-loop`
+`/install` · `/install-status` · `/start-here` · `/wrap-up` · `/doctor` · `/actualiza` · `/restaura` · `/backup` · `/add-client` · `/install-skill` · `/install-mcp` · `/aprende` · `/deep-dive` · `/recuerda` · `/loops` · `/evalua-loop`
 
 Los dos primeros (`/install`, `/install-status`) son nuevos en v0.6 y son la **única vía oficial** para gestionar la instalación desde dentro de Claude Code.
 
@@ -241,6 +245,22 @@ Al iniciar cada sesión (post-gate), comprueba `projects/briefs/*/brief.md`:
 - Si hay `status: active`, recuérdale qué dejó abierto.
 - Si hay un `.planning/` en raíz o cliente, indica que hay un GSD en marcha.
 - Si terminó algo (`status: done`), pregunta si archivamos.
+
+---
+
+## Personalizar skills sin perder updates — SKILL.local.md
+
+Si el operador quiere cambiar el comportamiento de una skill curada ("a partir de ahora esta skill siempre X"), NO edites su `SKILL.md` (un update lo pisaría o generaría conflicto). En su lugar:
+
+1. Crea/edita `SKILL.local.md` junto al `SKILL.md` de esa skill.
+2. Formato: lista de reglas fechadas, append-only:
+   ```markdown
+   ## Reglas del operador
+   - 2026-06-12: siempre incluir CTA al final de los emails
+   ```
+3. **Al invocar cualquier skill**: si existe `SKILL.local.md` en su carpeta, léelo DESPUÉS del `SKILL.md`. Sus reglas mandan sobre lo que diga la skill base.
+
+`SKILL.local.md` está gitignored: sobrevive a `/actualiza` sin conflictos y nunca se sube al repo.
 
 ---
 

@@ -108,3 +108,6 @@ yarn.lock
 # Synapsis temporary files (si alguna vez se genera dentro del repo)
 *.tmp
 *.lock
+
+# Personalizaciones del operador sobre skills curadas — sobreviven updates
+**/SKILL.local.md

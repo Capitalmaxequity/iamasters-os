@@ -17,7 +17,9 @@ Trae la última versión del OS y la instala sin tocar nada tuyo.
    ```
 4. `update.sh` ya preserva: tus skills propias, `brand-context/`, `context/`, `projects/`, `clients/` y `loops/`. Solo actualiza el código del OS, las skills curadas y Sinapsis vendored. NUNCA sobrescribe tu contenido.
 5. Si `git pull` falla por cambios locales sin commitear, NO forzar: explicar al usuario qué archivos tiene modificados y preguntar antes de hacer nada (sus cosas mandan).
-6. Al terminar, mostrar un resumen corto de qué cambió (leer el `## [Unreleased]` / última versión del `CHANGELOG.md`) y sugerir `/doctor` si algo se ve raro.
+6. Cuando `update.sh` corre sin terminal (lo lanzas tú), entra solo en modo no-interactivo: no pregunta nada, mantiene SIEMPRE la versión local ante conflictos y lista al final los "Pendientes de decisión". Si los hay, resuélvelos con el usuario uno a uno: explica qué cambia, y si acepta aplica `git checkout origin/<branch> -- <archivo>`.
+7. Al terminar, mostrar un resumen corto de qué cambió (leer el `## [Unreleased]` / última versión del `CHANGELOG.md`) y sugerir `/doctor` si algo se ve raro.
+8. Recuerda al usuario en una línea: "Si algo se rompe con esta versión, di **restaura** y volvemos a la anterior" (`/restaura`). El backup pre-update ya quedó en `.backup/`.
 
 ## Disparadores en lenguaje natural
 
