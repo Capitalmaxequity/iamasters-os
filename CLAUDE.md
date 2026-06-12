@@ -132,7 +132,7 @@ Lo que aporta este repo encima de Sinapsis:
 
 **Memoria de trabajo (memo manual)**: cuando el operador diga *"recuerda esto"*, *"apunta que"*, *"nota que"* o *"para la próxima"*, escribe el ítem en la sección que corresponda de `context/working-memory.md` (Hilos activos / Notas de entorno / Decisiones pendientes), con dedup y respetando el tope. Visible de inmediato en esta sesión; en sesiones futuras se carga al inicio.
 
-**Skills curadas (`.claude/skills/`)** — 35 skills core + 2 opcionales (cognito, arnes) (ver registry abajo).
+**Skills curadas** — modelo Core + Biblioteca: 17 core en `.claude/skills/` (siempre cargadas) + 20 en `skills-library/` instalables con `/skills` (ver registry abajo).
 
 **Niveles de proyecto**:
 1. **Single task** — pregunta directa. Output a `projects/<skill-name>/<fecha>-<titulo>/`.
@@ -145,11 +145,15 @@ Lo que aporta este repo encima de Sinapsis:
 
 ---
 
-## Skills registry (v0.9.2)
+## Skills registry (v0.10.0)
 
-Capa 1 = 35 skills core + 2 opcionales (cognito, arnes).
+Modelo **Core + Biblioteca**: 17 skills core siempre instaladas (el OS las necesita) + 20 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
 
-### `_meta/` — sistema (11)
+**Routing por intencion (IMPORTANTE)**: si el usuario pide algo que resuelve una skill de la BIBLIOTECA que no tiene instalada, NO digas que no puedes — ofrece instalarla: "Eso lo hace la skill `<nombre>`. ¿La instalo?" → `bash scripts/skills.sh add <nombre>`. Catalogo en vivo: `bash scripts/skills.sh list`.
+
+### Core — siempre instaladas (17)
+
+#### `_meta/` — sistema (10)
 
 | Skill | Descripción corta |
 |---|---|
@@ -159,55 +163,52 @@ Capa 1 = 35 skills core + 2 opcionales (cognito, arnes).
 | `meta-start-here` | Ritual diario de inicio |
 | `meta-wrap-up` | Ritual diario de cierre |
 | `welcome-quick-win` | Primer entregable en 5 min |
-| `seis-sombreros` | Seis sombreros de De Bono con **anti-ancla, 7 variantes, marcos divergentes y matriz de decisión** (v0.7) |
 | `decisions-log` | Diario append-only de decisiones |
 | `health-check` | Diagnóstico del OS con **validación profunda y detección de drift** (v0.6) |
 | `find-skills` | Descubre e instala skills por intención del usuario |
 | `recuerda` | **Recall de memoria local** (SQLite+FTS5) con fuente citada — base para todos, semántico opt-in (v0.8.2) |
 
-### `_meta/_optional/` (2)
-
-| Skill | Cómo activar |
-|---|---|
-| `cognito` | `/install-skill cognito` |
-| `arnes` | `/install-skill arnes` (🆕 v0.8.0) — arrancar proyectos software por niveles. Concepto fs-scaffold de Fernando Montero. Vendoreada en `vendor/arnes/` |
-
-### `marketing/` (7)
+#### Fundación de marca + motor (7)
 
 | Skill | Descripción |
 |---|---|
 | `marketing-brand-voice` | Voice profile + 3 registros |
 | `marketing-positioning` | Posicionamiento competitivo |
 | `marketing-icp` | Cliente ideal |
+| `automation-loop-engine` | Loop Engineering: convierte trabajo repetitivo en sistemas con verificación, compuertas humanas y aprendizaje |
+| `tool-firecrawl-scraper` | Wrapper Firecrawl |
+| `tool-humanizer` | Quita patrones AI-tell |
+| `tool-output-verifier` | Gate de calidad |
+
+### Biblioteca — instalables con `/skills` (20)
+
+Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar: `bash scripts/skills.sh add <nombre>` · Quitar: `remove` · Catálogo: `list`.
+
+#### `marketing/` (4)
+
+| Skill | Descripción |
+|---|---|
 | `marketing-copywriting` | Copy con humanizer gate |
 | `marketing-content-repurposing` | Distribución multiplataforma |
 | `marketing-email-sequence` | Secuencias de email con brand voice y gate obligatorio |
 | `marketing-meta-ads-analyzer` | Diagnóstico experto de campañas Meta Ads con Breakdown Effect |
 
-### `automation/` (3)
-
-| Skill | Descripción |
-|---|---|
-| `automation-loop-engine` | Loop Engineering: convierte trabajo repetitivo en sistemas con verificación, compuertas humanas y aprendizaje |
-| `automation-n8n-to-claude` | Migra workflows n8n al ecosistema Claude |
-| `automation-n8n-builder` | Crea workflows n8n vía MCP `n8n-mcp` |
-
-### `strategy/` (4)
+#### `strategy/` (6)
 
 | Skill | Descripción |
 |---|---|
 | `metodo-ias` | Método I.A.S. (Intención · Acción · Síntesis) anti-AI-brain-fry — diario + semanal (v0.7) |
+| `seis-sombreros` | Seis sombreros de De Bono con **anti-ancla, 7 variantes, marcos divergentes y matriz de decisión** (v0.7) |
+| `cognito` | Sistema Operativo de Pensamiento de Luis Pitik |
 | `strategy-web-research` | Búsqueda ligera citada con 3-5 fuentes |
 | `strategy-investigacion-profunda` | Informes completos con triangulación, scoring y verificación |
 | `strategy-stack-recommender` | Recomendación de stack tecnológico antes de construir |
 
-### `tools/` (9)
+#### `tools/` (7)
 
 | Skill | Descripción |
 |---|---|
-| `tool-firecrawl-scraper` | Wrapper Firecrawl |
-| `tool-humanizer` | Quita patrones AI-tell |
-| `tool-output-verifier` | Gate de calidad |
+| `arnes` | Arrancar proyectos software por niveles (Express/Estándar/PRO). Concepto fs-scaffold de Fernando Montero. Vendoreada en `vendor/arnes/` |
 | `tool-zoom-summary` | Resumen HTML interactivo de reuniones Zoom (transcripción + chat + topics + recursos) (v0.7) |
 | `tool-seguridad-ia` | Prompts preventivos y checklist de seguridad para desarrollo con IA |
 | `tool-quality-gate` | Validación pre-deploy con score 0-100 |
@@ -215,7 +216,14 @@ Capa 1 = 35 skills core + 2 opcionales (cognito, arnes).
 | `tool-web-legal-audit` | Auditoría RGPD/LSSI/cookies/accesibilidad para webs |
 | `tool-web-security-audit` | Auditoría defensiva de seguridad web autorizada |
 
-### `visualization/` (1)
+#### `automation/` (2)
+
+| Skill | Descripción |
+|---|---|
+| `automation-n8n-to-claude` | Migra workflows n8n al ecosistema Claude |
+| `automation-n8n-builder` | Crea workflows n8n vía MCP `n8n-mcp` |
+
+#### `visualization/` (1)
 
 | Skill | Descripción |
 |---|---|
@@ -229,13 +237,13 @@ Capa 1 = 35 skills core + 2 opcionales (cognito, arnes).
 
 ### Slash commands
 
-`/install` · `/install-status` · `/start-here` · `/wrap-up` · `/doctor` · `/actualiza` · `/restaura` · `/backup` · `/add-client` · `/install-skill` · `/install-mcp` · `/aprende` · `/deep-dive` · `/recuerda` · `/loops` · `/evalua-loop`
+`/install` · `/install-status` · `/start-here` · `/wrap-up` · `/doctor` · `/actualiza` · `/restaura` · `/backup` · `/skills` · `/add-client` · `/install-skill` · `/install-mcp` · `/aprende` · `/deep-dive` · `/recuerda` · `/loops` · `/evalua-loop`
 
 Los dos primeros (`/install`, `/install-status`) son nuevos en v0.6 y son la **única vía oficial** para gestionar la instalación desde dentro de Claude Code.
 
-### Capa 2 — on-demand library
+### Capa 2 — skills externas
 
-Ver [`docs/skills-recommended.md`](docs/skills-recommended.md) para skills opcionales instalables vía `/install-skill <github-url>`.
+Ver [`docs/skills-recommended.md`](docs/skills-recommended.md) para skills de terceros instalables vía `/install-skill <github-url>` (con validación previa). Las skills curadas del OS viven en la biblioteca (`/skills`), no aquí.
 
 ---
 

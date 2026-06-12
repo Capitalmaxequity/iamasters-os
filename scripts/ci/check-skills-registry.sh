@@ -25,11 +25,15 @@ for line in registry.splitlines():
     if match:
         registered.add(match.group(1))
 
+# Core (siempre instaladas) + biblioteca (instalables con /skills).
+# En el repo del operador puede haber skills de biblioteca instaladas
+# (copias en .claude/skills/) — el set() dedup evita contarlas doble.
 disk = set()
-for path in Path(".claude/skills").rglob("SKILL.md"):
-    if any("_archived" in part for part in path.parts):
-        continue
-    disk.add(path.parent.name)
+for root in (".claude/skills", "skills-library"):
+    for path in Path(root).rglob("SKILL.md"):
+        if any("_archived" in part for part in path.parts):
+            continue
+        disk.add(path.parent.name)
 
 missing_on_disk = sorted(registered - disk)
 missing_in_registry = sorted(disk - registered)

@@ -285,6 +285,13 @@ if [ ${#PENDING_CONFLICTS[@]} -gt 0 ]; then
     echo -e "  O dile a Claude: ${CYAN}\"aplica la versión nueva de <archivo>\"${NC}"
 fi
 
+# ── Sync skills instaladas desde la biblioteca ──
+# Si el update trajo versiones nuevas de skills que el operador tiene
+# instaladas, refrescarlas (SKILL.local.md se preserva siempre)
+if [ -f "$REPO_ROOT/scripts/skills.sh" ]; then
+    bash "$REPO_ROOT/scripts/skills.sh" sync || true
+fi
+
 # ── Done ──
 echo
 echo -e "${GREEN}${BOLD}============================================================${NC}"

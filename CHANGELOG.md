@@ -20,6 +20,22 @@ Formato basado en [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ---
 
+## [0.10.0] — 2026-06-12
+
+**Skills a la carta.** Se acabó instalar las 35 skills a todo el mundo: ahora el OS trae 17 core (las que el sistema necesita) y las otras 20 viven en la biblioteca, visibles pero sin gastar contexto hasta que el operador las instala. Anthropic recomienda no pasar de ~50 skills cargadas; con este modelo el catálogo puede crecer sin límite.
+
+### Added
+- **Modelo Core + Biblioteca**: 17 skills core en `.claude/skills/` + 20 instalables en `skills-library/` (incluye absorber el antiguo `_meta/_optional/`: cognito y arnes pasan a la biblioteca).
+- **`/skills`** (`scripts/skills.sh`) — catálogo y gestión: `list` (instaladas vs disponibles con descripción), `add <nombre>` (con resolución automática de dependencias), `remove <nombre>` (las core no se pueden quitar), `sync` (refresca instaladas tras `/actualiza`). `SKILL.local.md` se preserva en todo el ciclo: instalar, quitar, reinstalar y sincronizar.
+- **Routing por intención**: si el usuario pide algo que resuelve una skill de biblioteca no instalada, el agente ofrece instalarla en vez de decir que no puede.
+
+### Changed
+- `/install-skill <nombre>` (modo atajo) ahora instala desde la biblioteca vía `scripts/skills.sh`; el modo URL de GitHub sigue igual con validación previa.
+- `scripts/update.sh` ejecuta `skills.sh sync` al final: las skills de biblioteca instaladas se refrescan solas con cada actualización.
+- CI `check-skills-registry.sh` valida el registry contra ambas raíces (`.claude/skills/` + `skills-library/`).
+
+---
+
 ## [0.9.2] — 2026-06-12
 
 **Resilience pack.** El OS se respalda, se actualiza y se recupera solo: `/backup` a iCloud/Dropbox, `/restaura` como botón de deshacer de `/actualiza`, updates no-interactivos que nunca pisan lo del operador, y state de instalación que siempre dice la verdad.
