@@ -45,9 +45,10 @@
       {
         "hooks": [
           {
-            "_comment": "Auto-sync del índice de memoria (/recuerda): ingest incremental best-effort al iniciar sesión. Best-effort: no bloquea el arranque ni rompe si faltan deps (pyyaml) o no hay corpus.",
+            "_comment": "Auto-sync del índice de memoria (/recuerda): ingest incremental best-effort al iniciar sesión. async:true → corre en segundo plano y NUNCA retrasa el arranque ni la carga de comandos/skills (antes era síncrono y al colgarse el script los comandos no salían en /). Best-effort: no rompe si faltan deps (pyyaml) o no hay corpus.",
             "type": "command",
             "command": "python3 scripts/memory-index/ingest.py >/dev/null 2>&1 || true",
+            "async": true,
             "timeout": 20
           }
         ]
