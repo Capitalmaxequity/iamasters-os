@@ -4,6 +4,10 @@
 .env.*.local
 !.env.example
 
+# MCP config — lleva API keys, no se commitea
+.mcp.json
+!.mcp.json.example
+
 # OS
 .DS_Store
 Thumbs.db
