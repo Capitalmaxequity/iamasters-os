@@ -132,7 +132,7 @@ Lo que aporta este repo encima de Sinapsis:
 
 **Memoria de trabajo (memo manual)**: cuando el operador diga *"recuerda esto"*, *"apunta que"*, *"nota que"* o *"para la próxima"*, escribe el ítem en la sección que corresponda de `context/working-memory.md` (Hilos activos / Notas de entorno / Decisiones pendientes), con dedup y respetando el tope. Visible de inmediato en esta sesión; en sesiones futuras se carga al inicio.
 
-**Skills curadas** — modelo Core + Biblioteca: 17 core en `.claude/skills/` (siempre cargadas) + 20 en `skills-library/` instalables con `/skills` (ver registry abajo).
+**Skills curadas** — modelo Core + Biblioteca: 17 core en `.claude/skills/` (siempre cargadas) + 21 en `skills-library/` instalables con `/skills` (ver registry abajo).
 
 **Niveles de proyecto**:
 1. **Single task** — pregunta directa. Output a `projects/<skill-name>/<fecha>-<titulo>/`.
@@ -147,7 +147,7 @@ Lo que aporta este repo encima de Sinapsis:
 
 ## Skills registry (v0.10.0)
 
-Modelo **Core + Biblioteca**: 17 skills core siempre instaladas (el OS las necesita) + 20 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
+Modelo **Core + Biblioteca**: 17 skills core siempre instaladas (el OS las necesita) + 21 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
 
 **Routing por intencion (IMPORTANTE)**: si el usuario pide algo que resuelve una skill de la BIBLIOTECA que no tiene instalada, NO digas que no puedes — ofrece instalarla: "Eso lo hace la skill `<nombre>`. ¿La instalo?" → `bash scripts/skills.sh add <nombre>`. Catalogo en vivo: `bash scripts/skills.sh list`.
 
@@ -180,7 +180,7 @@ Modelo **Core + Biblioteca**: 17 skills core siempre instaladas (el OS las neces
 | `tool-humanizer` | Quita patrones AI-tell |
 | `tool-output-verifier` | Gate de calidad |
 
-### Biblioteca — instalables con `/skills` (20)
+### Biblioteca — instalables con `/skills` (21)
 
 Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar: `bash scripts/skills.sh add <nombre>` · Quitar: `remove` · Catálogo: `list`.
 
@@ -216,12 +216,13 @@ Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar:
 | `tool-web-legal-audit` | Auditoría RGPD/LSSI/cookies/accesibilidad para webs |
 | `tool-web-security-audit` | Auditoría defensiva de seguridad web autorizada |
 
-#### `automation/` (2)
+#### `automation/` (3)
 
 | Skill | Descripción |
 |---|---|
 | `automation-n8n-to-claude` | Migra workflows n8n al ecosistema Claude |
 | `automation-n8n-builder` | Crea workflows n8n vía MCP `n8n-mcp` |
+| `automation-client-deploy` | Despliega un proyecto local al entorno del cliente (VPS/PC): pre-deploy sin secretos, empaquetado, transfer, setup remoto y guía de entrega |
 
 #### `visualization/` (1)
 
