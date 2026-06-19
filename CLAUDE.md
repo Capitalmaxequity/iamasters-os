@@ -149,7 +149,7 @@ Lo que aporta este repo encima de Sinapsis:
 
 Modelo **Core + Biblioteca**: 17 skills core siempre instaladas (el OS las necesita) + 21 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
 
-**Routing por intencion (IMPORTANTE)**: si el usuario pide algo que resuelve una skill de la BIBLIOTECA que no tiene instalada, NO digas que no puedes — ofrece instalarla: "Eso lo hace la skill `<nombre>`. ¿La instalo?" → `bash scripts/skills.sh add <nombre>`. Catalogo en vivo: `bash scripts/skills.sh list`.
+**Routing por intencion (OBLIGATORIO — actívalo en CADA petición)**: antes de responder que no puedes hacer algo, o de resolverlo a mano, contrasta SIEMPRE la intención del operador contra la tabla de **Biblioteca** de abajo (la columna "Ofrécela cuando…" lista los disparadores de cada skill no instalada). Si una encaja, NO la ignores ni la resuelvas tú: ofrécela → "Eso lo hace la skill `<nombre>`. ¿La instalo?" → `bash scripts/skills.sh add <nombre>`. Las skills instaladas (sección Core) sí se cargan solas: invócalas directamente cuando la intención encaje, sin preguntar. Catálogo en vivo y fuente de verdad de descripciones: `bash scripts/skills.sh list`.
 
 ### Core — siempre instaladas (17)
 
@@ -186,49 +186,49 @@ Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar:
 
 #### `marketing/` (4)
 
-| Skill | Descripción |
+| Skill | Ofrécela cuando el operador… |
 |---|---|
-| `marketing-copywriting` | Copy con humanizer gate |
-| `marketing-content-repurposing` | Distribución multiplataforma |
-| `marketing-email-sequence` | Secuencias de email con brand voice y gate obligatorio |
-| `marketing-meta-ads-analyzer` | Diagnóstico experto de campañas Meta Ads con Breakdown Effect |
+| `marketing-copywriting` | pida un texto de marketing: "escríbeme/redacta/hazme un post de LinkedIn", "un tweet", "un hilo de X", "un email", "un anuncio", "una landing", "un headline", "copy para…" |
+| `marketing-content-repurposing` | quiera multiplicar una pieza: "repurpose este vídeo/podcast", "saca contenido de esto", "trocea esto para redes", "distribuye esto en varias plataformas" |
+| `marketing-email-sequence` | pida secuencias/automatizaciones de email: "secuencia de bienvenida", "nurture", "win-back", "drip", "qué emails enviar", "cadencia de emails", "embudo de emails" |
+| `marketing-meta-ads-analyzer` | quiera diagnosticar Meta Ads: "analiza mi campaña", "por qué no convierte", "CPA/ROAS/CPM/CTR", "revisa estas audiencias/creatividades", pegue datos o capturas de Meta |
 
 #### `strategy/` (6)
 
-| Skill | Descripción |
+| Skill | Ofrécela cuando el operador… |
 |---|---|
-| `metodo-ias` | Método I.A.S. (Intención · Acción · Síntesis) anti-AI-brain-fry — diario + semanal (v0.7) |
-| `seis-sombreros` | Seis sombreros de De Bono con **anti-ancla, 7 variantes, marcos divergentes y matriz de decisión** (v0.7) |
-| `cognito` | Sistema Operativo de Pensamiento de Luis Pitik |
-| `strategy-web-research` | Búsqueda ligera citada con 3-5 fuentes |
-| `strategy-investigacion-profunda` | Informes completos con triangulación, scoring y verificación |
-| `strategy-stack-recommender` | Recomendación de stack tecnológico antes de construir |
+| `metodo-ias` | diga "método IAS", "planifica la sesión", "recap semanal", "me estoy quemando con la IA", "AI brain fry", "tomo demasiadas micro-decisiones", o quiera estructurar trabajo con IA sin saturarse |
+| `seis-sombreros` | pida "seis sombreros", "six hats", "ayúdame a pensar esto", "pros y contras en serio", "rompe el ancla", "análisis multi-perspectiva", o esté ante una decisión con sesgo de anclaje |
+| `cognito` | afronte decisiones con trade-offs, tensión emocional+técnica+estratégica, "¿debería hacer X?", análisis profundo o cambios de enfoque que pidan modos cognitivos explícitos |
+| `strategy-web-research` | pida búsqueda web **ligera y rápida**: "búscame", "investiga rápido", "compara X e Y", 3-5 fuentes, info actual acotada (no informe largo) |
+| `strategy-investigacion-profunda` | pida un **informe completo**: "investiga a fondo", "informe con fuentes", "triangula", "verifica con varias fuentes", "due diligence", "estado del arte" |
+| `strategy-stack-recommender` | pregunte "¿con qué construyo esto?", "¿qué stack me recomiendas?", "¿qué tecnologías uso para…?", o describa un proyecto y necesite orientación técnica antes de picar código |
 
 #### `tools/` (7)
 
-| Skill | Descripción |
+| Skill | Ofrécela cuando el operador… |
 |---|---|
-| `arnes` | Arrancar proyectos software por niveles (Express/Estándar/PRO). Concepto fs-scaffold de Fernando Montero. Vendoreada en `vendor/arnes/` |
-| `tool-zoom-summary` | Resumen HTML interactivo de reuniones Zoom (transcripción + chat + topics + recursos) (v0.7) |
-| `tool-seguridad-ia` | Prompts preventivos y checklist de seguridad para desarrollo con IA |
-| `tool-quality-gate` | Validación pre-deploy con score 0-100 |
-| `tool-transcribe-social` | Transcripción de vídeos sociales con Groq Whisper |
-| `tool-web-legal-audit` | Auditoría RGPD/LSSI/cookies/accesibilidad para webs |
-| `tool-web-security-audit` | Auditoría defensiva de seguridad web autorizada |
+| `arnes` | diga "nuevo proyecto", "crea una app/web/landing", "arranca un proyecto", "adopta/renueva este proyecto", o quiera montar software paso a paso (Express/Estándar/PRO) |
+| `tool-zoom-summary` | pida "resume esta reunión", "qué se dijo en la call", "recap de la reunión", "resumen zoom", "/zoom", o documente una clase/call recurrente |
+| `tool-seguridad-ia` | diga "revisa la seguridad de este código", "¿es seguro lo que ha escrito la IA?", "checklist antes de desplegar", o genere código sensible (credenciales, endpoints, BBDD) |
+| `tool-quality-gate` | diga "antes de desplegar", "voy a hacer push", "¿está listo para producción?", "valida esta app", o cierre un proyecto arnes |
+| `tool-transcribe-social` | pase una URL de Reel/TikTok/Short/vídeo y diga "transcribe esto", "saca lo que dice", "de qué va este vídeo" |
+| `tool-web-legal-audit` | diga "audita legalmente esta web", "¿cumple RGPD/LSSI?", "revisa cookies/trackers", "comprueba accesibilidad", o lance una landing pública |
+| `tool-web-security-audit` | diga "¿tiene vulnerabilidades mi web?", "pentest a mi sitio", "busca agujeros de seguridad", "¿es hackeable?" (solo webs propias/autorizadas) |
 
 #### `automation/` (3)
 
-| Skill | Descripción |
+| Skill | Ofrécela cuando el operador… |
 |---|---|
-| `automation-n8n-to-claude` | Migra workflows n8n al ecosistema Claude |
-| `automation-n8n-builder` | Crea workflows n8n vía MCP `n8n-mcp` |
-| `automation-client-deploy` | Despliega un proyecto local al entorno del cliente (VPS/PC): pre-deploy sin secretos, empaquetado, transfer, setup remoto y guía de entrega |
+| `automation-n8n-to-claude` | diga "tengo un workflow en n8n que quiero traer aquí", "pasa esta automatización a Claude", "migra mi n8n", o pegue un JSON de n8n/Make para reimplementar |
+| `automation-n8n-builder` | diga "créame un workflow en n8n", "monta esto en n8n", "automatiza X en n8n", o quiera construir/desplegar un flujo n8n vía MCP |
+| `automation-client-deploy` | diga "despliega esto al cliente", "llévalo al VPS/PC del cliente", "empaqueta y entrega", o tenga un proyecto local listo para producción en el entorno del cliente |
 
 #### `visualization/` (1)
 
-| Skill | Descripción |
+| Skill | Ofrécela cuando el operador… |
 |---|---|
-| `tool-visual-explainer` | HTML autocontenido compartible |
+| `tool-visual-explainer` | diga "hazme un HTML de esto", "ponlo bonito para compartir", "explícalo visual", "móntame una página que explique X", o necesite compartir un output complejo (diagrama, comparativa, recap) |
 
 ### Plugins Anthropic (instalación vía marketplace)
 

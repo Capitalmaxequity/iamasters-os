@@ -32,18 +32,20 @@ Comprobar `.claude/.skills-pending.json`:
 
 ### Paso 3 · Update CLAUDE.md skills registry
 
-Localizar bloque entre `<!-- skills-registry-start -->` y `<!-- skills-registry-end -->`.
+Localizar la sección `## Skills registry` del CLAUDE.md.
 
-Generar tabla:
-```markdown
-| Categoría | Skill | Estado | Tokens |
-|---|---|---|---|
-| _meta | meta-skill-creator | active | ~700 |
-| _meta | meta-onboarding-wizard | active | ~400 |
-| ... | ... | ... | ... |
-```
+**Regla de formato (importante para que el routing funcione)**: las sub-tablas de la
+sección **Biblioteca** deben tener la columna intencional `Ofrécela cuando el operador…`
+con los DISPARADORES de cada skill (frases en castellano), NO una descripción de *qué es*.
+Esto pone los triggers de las skills no instaladas en el contexto cargado cada sesión, que es
+lo único que permite ofrecerlas por intención (las de biblioteca no se cargan solas).
 
-Reemplazar contenido entre marcadores.
+Al sincronizar tras añadir/quitar/editar skills:
+- Para cada skill nueva de biblioteca, extrae sus disparadores del `description:` de su
+  `SKILL.md` (la parte "Úsala/Ofrécela cuando…") y crea su fila intencional.
+- Mantén las sub-tablas Core como están (esas sí se cargan; basta el nombre + qué es).
+- Si una skill cambió de descripción, refresca su fila.
+- Fuente de verdad de descripciones: `bash scripts/skills.sh list`.
 
 ### Paso 4 · Append learnings (si los hay)
 

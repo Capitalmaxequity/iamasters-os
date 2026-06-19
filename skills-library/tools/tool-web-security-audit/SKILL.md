@@ -1,6 +1,6 @@
 ---
 name: tool-web-security-audit
-description: "Auditoría defensiva de seguridad web tipo pentest black-box para webs propias o con autorización explícita. Ejecuta tests OWASP, CVEs, CORS, headers, BBDD, auth, rate limiting e inyección, y genera informe HTML con vulnerabilidades, pruebas de concepto mínimas y plan de acción. Úsala para auditorías pre-lanzamiento, revisión defensiva o validación de una web autorizada antes de desplegar."
+description: "Auditoría defensiva de seguridad web tipo pentest black-box para webs propias o con autorización explícita. Ejecuta tests OWASP, CVEs, CORS, headers, BBDD, auth, rate limiting e inyección, y genera informe HTML con vulnerabilidades, pruebas de concepto mínimas y plan de acción. Úsala para auditorías pre-lanzamiento, revisión defensiva o validación de una web autorizada antes de desplegar, o cuando el operador diga '¿tiene vulnerabilidades mi web?', 'pentest a mi sitio', 'busca agujeros de seguridad', 'auditoría de seguridad web', 'testea si mi web es segura', '¿es hackeable esto?'. Solo sobre webs propias o con autorización explícita."
 version: 2.0.0
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: health-check
-description: Diagnóstico de iAmasters OS con VALIDACIÓN PROFUNDA. v0.6 - no solo comprueba que existan archivos, sino que sean válidos y funcionales (JSON parseable, hooks ejecutables, contenido real >100 chars, etc.). Cruza con ~/.claude/skills/_install-state.json para detectar drift (state dice done pero archivos faltan, o al revés). Devuelve reporte 🟢🟡🔴 con acciones concretas. Soporta auto-fix limitado. Se invoca vía /doctor o cuando otra skill detecta inconsistencia.
+description: Diagnóstico de iAmasters OS con VALIDACIÓN PROFUNDA. v0.6 - no solo comprueba que existan archivos, sino que sean válidos y funcionales (JSON parseable, hooks ejecutables, contenido real >100 chars, etc.). Cruza con ~/.claude/skills/_install-state.json para detectar drift (state dice done pero archivos faltan, o al revés). Devuelve reporte 🟢🟡🔴 con acciones concretas. Soporta auto-fix limitado. Se invoca vía /doctor, cuando otra skill detecta inconsistencia, o cuando el operador diga "¿todo funciona?", "revisa si hay problemas", "chequea la salud del OS", "diagnóstico", "algo no va bien", "está todo bien instalado".
 ---
 
 # health-check

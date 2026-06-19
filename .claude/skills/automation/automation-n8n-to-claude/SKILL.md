@@ -1,6 +1,6 @@
 ---
 name: automation-n8n-to-claude
-description: "Migra workflows de n8n/Make al ecosistema Claude Code. Analiza JSONs, mapea nodos, propone implementacion (skills, crons, web apps, dashboards) y detecta mejoras. Usa cuando el usuario pegue un JSON de n8n o mencione migrar automatizaciones."
+description: "Migra workflows de n8n/Make al ecosistema Claude Code. Analiza JSONs, mapea nodos, propone implementacion (skills, crons, web apps, dashboards) y detecta mejoras. Usala cuando el usuario pegue un JSON de n8n/Make o diga 'tengo un workflow en n8n que quiero traer aqui', 'pasar/convertir esta automatizacion a Claude', 'migra mi n8n a Claude Code', 'como meto en Claude esta automatizacion', o quiera reimplementar en Claude algo que ya tiene montado en n8n/Make."
 author: iAmasters Automations
 version: 3.0.0
 tags: [n8n, make, automatizacion, migracion, workflow, claude-code, no-code]

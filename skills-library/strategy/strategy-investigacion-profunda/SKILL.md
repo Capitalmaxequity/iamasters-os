@@ -1,6 +1,6 @@
 ---
 name: strategy-investigacion-profunda
-description: Genera informes completos de investigación profunda en español con triangulación multi-fuente, scoring de credibilidad, verificación de afirmaciones y salida Markdown + HTML. Úsala para decisiones complejas, estudios comparativos, estado del arte o research reports; para búsqueda ligera de 3-5 fuentes usa `strategy-web-research`.
+description: Genera informes completos de investigación profunda en español con triangulación multi-fuente, scoring de credibilidad, verificación de afirmaciones y salida Markdown + HTML. Úsala para decisiones complejas, estudios comparativos, estado del arte o research reports, o cuando el operador diga "necesito un informe con fuentes", "investiga a fondo X", "triangula estos datos", "verifica esto con varias fuentes", "informe completo sobre…", "due diligence de…". Para búsqueda ligera y rápida de 3-5 fuentes usa `strategy-web-research` (no esta).
 ---
 
 # Investigación Profunda

@@ -1,6 +1,6 @@
 ---
 name: tool-firecrawl-scraper
-description: Wrapper de Firecrawl API para scrapear páginas web sin bot blockers. Usado por marketing-brand-voice (extraer voice samples + assets), strategy-competitor-monitor (analizar competidores), y otras skills que necesiten contenido público de URLs. Degradación graceful si no hay API key.
+description: Wrapper de Firecrawl API para extraer el contenido de URLs públicas sin bot blockers. Úsala cuando el usuario diga o pida "scrapea esta URL", "saca el texto de esta página", "extrae el contenido de esta web", "dame los links de…", "léete esta web y dime…", o cuando necesites el contenido de una página y el fetch nativo falle o lo bloqueen. La invocan también marketing-brand-voice (voice samples + assets) y otras skills que analizan contenido online. Degrada graceful si no hay API key.
 ---
 
 # tool-firecrawl-scraper

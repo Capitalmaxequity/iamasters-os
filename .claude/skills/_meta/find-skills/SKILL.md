@@ -1,6 +1,6 @@
 ---
 name: find-skills
-description: Ayuda a descubrir e instalar skills de agente cuando el usuario pregunta "cómo hago X", "busca una skill para X", "hay alguna skill que pueda...", o quiere ampliar capacidades. Usar cuando el usuario busca una funcionalidad que quizá exista como skill instalable. English triggers: find a skill, is there a skill, install skill.
+description: Descubre e instala skills de agente EXTERNAS (ecosistema npx skills / GitHub) cuando el usuario pregunta "busca una skill para X", "hay alguna skill que pueda…", "cómo hago X y no hay skill", o quiere ampliar capacidades más allá del OS. English triggers: find a skill, is there a skill, install skill. NOTA: para la biblioteca local del propio iAmasters OS (las skills en skills-library/), NO uses esta skill — usa /skills o el routing por intención del CLAUDE.md (ofrece instalar la skill de biblioteca que encaje).
 ---
 
 # Buscar skills

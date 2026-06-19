@@ -52,9 +52,20 @@ inst_path() {
 }
 
 skill_desc() {
-    # $1 = ruta de skill; primera línea de description del frontmatter, truncada
-    grep -m1 '^description:' "$1/SKILL.md" 2>/dev/null \
-        | sed 's/^description:[[:space:]]*//' | cut -c1-90
+    # $1 = ruta de skill; description del frontmatter, truncada.
+    # Maneja 3 estilos YAML: una línea (description: foo),
+    # plegado (description: >) y bloque (description: |) — en los dos
+    # últimos, lee las líneas indentadas siguientes y las une en una.
+    awk '
+        /^description:[[:space:]]*[>|]/ { folded=1; next }
+        /^description:[[:space:]]*/ {
+            sub(/^description:[[:space:]]*/, ""); print; exit
+        }
+        folded {
+            if ($0 ~ /^[[:space:]]+/) { sub(/^[[:space:]]+/, ""); printf "%s ", $0; next }
+            exit
+        }
+    ' "$1/SKILL.md" 2>/dev/null | sed 's/^"//; s/"[[:space:]]*$//; s/[[:space:]]*$//' | cut -c1-110
 }
 
 deps_for() {

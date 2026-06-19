@@ -1,6 +1,6 @@
 ---
 name: tool-output-verifier
-description: Quality gate antes de entregar outputs al cliente. Hace 4 checks (humanizer score, brand voice match, length per platform, factuality flags) y devuelve score 0-10 con sugerencias específicas. Las skills marketing-* y operations-* la invocan automáticamente como último paso. Pasa o bloquea.
+description: Quality gate antes de entregar outputs al cliente. Hace 4 checks (humanizer score, brand voice match, length per platform, factuality flags) y devuelve score 0-10 con sugerencias específicas. Las skills marketing-* y operations-* la invocan automáticamente como último paso. Úsala también cuando el operador diga "verifica esto antes de entregar", "revisa este texto antes de publicar", "¿esto está listo para el cliente?", "pásalo por el gate de calidad", "comprueba el voice". Pasa o bloquea.
 ---
 
 # tool-output-verifier

@@ -1,6 +1,6 @@
 ---
 name: meta-start-here
-description: Ritual de inicio de sesión para iAmasters OS. Carga el contexto necesario (operator-state, user.md, daily summary, learnings, proyectos abiertos), recapitula al operador qué dejó pendiente, y propone tarea del día. Se invoca al primer turno de cada sesión, automáticamente o por /start-here.
+description: Ritual de inicio de sesión para iAmasters OS. Carga el contexto necesario (operator-state, user.md, daily summary, learnings, proyectos abiertos), recapitula al operador qué dejó pendiente, y propone tarea del día. Se invoca al primer turno de cada sesión automáticamente o por /start-here. Úsala también cuando el operador diga "ponte al día", "qué hice ayer", "dónde lo dejé", "dónde estábamos", "resumen de dónde dejamos", "retomemos" o pida recuperar el contexto de la sesión anterior.
 ---
 
 # meta-start-here

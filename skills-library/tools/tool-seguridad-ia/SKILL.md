@@ -1,6 +1,6 @@
 ---
 name: tool-seguridad-ia
-description: "Manual de seguridad para desarrollo con IA. Aplica prompts preventivos, checklists pre-deploy y protocolos de emergencia para los 10 riesgos críticos (credenciales, endpoints, inyección, rate limiting, XSS, BBDD, dependencias, logs). Úsala al generar código sensible, revisar seguridad o antes de desplegar proyectos creados con arnes."
+description: "Manual de seguridad para desarrollo con IA. Aplica prompts preventivos, checklists pre-deploy y protocolos de emergencia para los 10 riesgos críticos (credenciales, endpoints, inyección, rate limiting, XSS, BBDD, dependencias, logs). Úsala al generar código sensible, revisar seguridad o antes de desplegar proyectos creados con arnes, o cuando el operador diga 'revisa la seguridad de este código', '¿es seguro esto que ha escrito la IA?', 'checklist de seguridad antes de desplegar', 'protégeme las credenciales/endpoints', 'qué riesgos tiene este código'."
 ---
 
 # Manual de Seguridad para Desarrollo con IA

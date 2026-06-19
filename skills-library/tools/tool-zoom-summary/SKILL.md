@@ -1,6 +1,6 @@
 ---
 name: tool-zoom-summary
-description: "Genera un resumen HTML interactivo de una reunión de Zoom. Descarga transcripción VTT + chat via API, identifica los temas tratados, y produce un documento branded con timestamps clickables, recursos compartidos y mini-resumen. Usar cuando el usuario pida 'resumen zoom', 'resumen de la reunión', 'zoom summary', '/zoom', o tras una clase / call recurrente que el operador documenta semanalmente."
+description: "Genera un resumen HTML interactivo de una reunión de Zoom. Descarga transcripción VTT + chat via API, identifica los temas tratados, y produce un documento branded con timestamps clickables, recursos compartidos y mini-resumen. Usar cuando el usuario pida 'resumen zoom', 'resumen de la reunión', 'zoom summary', '/zoom', 'resume esta reunión', 'qué se dijo en la call', 'recap de la reunión de hoy', 'sácame lo importante de la reunión', o tras una clase / call recurrente que el operador documenta semanalmente."
 triggers:
   - "resumen zoom"
   - "resumen de la reunion"
