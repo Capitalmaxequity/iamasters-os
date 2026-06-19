@@ -1,6 +1,6 @@
 ---
 name: notebooklm-mcp
-description: Advanced MCP-based researcher for NotebookLM. Supports tool profiles (minimal/full), persistent auth, and library management. Use for multi-source grounded research.
+description: Investigador avanzado vía MCP sobre NotebookLM (perfiles de herramientas minimal/full, auth persistente, gestión de biblioteca) para investigación fundamentada (grounded) multi-fuente sin alucinaciones. Úsala cuando el operador diga o pida "investiga en mis documentos", "pregunta a mi NotebookLM", "research grounded sobre estos PDFs/fuentes", "gestiona mi biblioteca de NotebookLM" o necesite respuestas ancladas a documentos. La usa internamente la skill competencia.
 ---
 
 # Skill: NotebookLM MCP Researcher

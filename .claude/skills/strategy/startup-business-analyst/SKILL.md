@@ -1,6 +1,6 @@
 ---
 name: startup-business-analyst
-description: Expert startup business analyst specializing in market sizing, financial modeling, competitive analysis, and strategic planning for early-stage companies (pre-seed to Series A).
+description: Analista de negocio para startups en etapa temprana (pre-seed a Serie A): dimensionamiento de mercado, modelo financiero, análisis competitivo y planificación estratégica. Úsala cuando el operador diga o pida "calcula el TAM/SAM/SOM", "modelo financiero de esta startup", "valida el tamaño de mercado", "monta el business case", "proyecciones y unit economics", "análisis de viabilidad del negocio". Cierre de la cadena de inteligencia competitiva.
 ---
 
 # Startup Business Analyst Skill

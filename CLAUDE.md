@@ -191,8 +191,8 @@ Modelo **Core + Biblioteca**: 27 skills core siempre instaladas (el OS las neces
 
 | Skill | Descripción |
 |---|---|
-| `competencia` | Inteligencia competitiva con NotebookLM + web (insights, oportunidades, fortalezas). Usa `Notebooklm-mcp` |
-| `Notebooklm-mcp` | Investigación fundamentada (grounded) sobre documentos vía NotebookLM MCP, con perfiles de tokens |
+| `competencia` | Inteligencia competitiva con NotebookLM + web (insights, oportunidades, fortalezas). Usa `notebooklm-mcp` |
+| `notebooklm-mcp` | Investigación fundamentada (grounded) sobre documentos vía NotebookLM MCP, con perfiles de tokens |
 | `startup-business-analyst` | Análisis de negocio para startups: TAM/SAM/SOM, modelo financiero, competitivo, planificación |
 
 #### `tools/` — core (4)
@@ -281,12 +281,12 @@ y confirma.
   → `brand-guidelines` → `usability-retention-review` → `react-best-practices` /
   `backend-development` → `vercel-deploy`. (Complementa a `arnes`, que orquesta el arranque.)
 - **Inteligencia competitiva**: `competitive-ads-extractor` + `competencia` (esta usa
-  `Notebooklm-mcp`) → `startup-business-analyst` → `investigacion-mercado` (skill global).
+  `notebooklm-mcp`) → `startup-business-analyst` → `investigacion-mercado` (skill global).
 - **Data/ML**: `exploratory-data-analysis` → `statistical-analysis` / `statsmodels` →
   `scikit-learn` / `pytorch-lightning` → `shap` (explicabilidad). Aplica a FVI y Polymarket.
 - **Vídeo**: `video-downloader` → `tool-transcribe-social` (descarga y luego transcribe).
 
-Dependencia dura declarada: `competencia` → `Notebooklm-mcp` (ambas core, ya satisfecha).
+Dependencia dura declarada: `competencia` → `notebooklm-mcp` (ambas core, ya satisfecha).
 
 ### Plugins Anthropic (instalación vía marketplace)
 

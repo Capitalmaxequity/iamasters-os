@@ -1,6 +1,6 @@
 ---
 name: competitive-ads-extractor
-description: Extracts and analyzes competitors' ads from ad libraries (Facebook, LinkedIn, etc.) to understand what messaging, problems, and creative approaches are working.
+description: Extrae y analiza anuncios de la competencia desde las ad libraries (Facebook/Meta, LinkedIn, etc.) para entender qué mensajes, dolores y creatividades funcionan. Úsala cuando el operador diga o pida "qué anuncios pone mi competencia", "saca los ads de X", "qué mensajes usan los rivales", "analiza la publicidad de la competencia", "qué creatividades funcionan en mi sector". Entrada de la cadena de inteligencia competitiva (encadena con competencia y startup-business-analyst).
 ---
 
 # Competitive Ads Extractor

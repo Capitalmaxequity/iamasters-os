@@ -1,6 +1,6 @@
 ---
 name: backend-development
-description: Backend API design, database architecture, microservices patterns, and test-driven development. Use for designing APIs, database schemas, or backend system architecture.
+description: Diseño de APIs, arquitectura de base de datos, patrones de microservicios y desarrollo guiado por tests (TDD). Úsala cuando el operador diga o pida "diseña la API", "estructura la base de datos", "esquema de BBDD", "arquitectura backend", "endpoints REST", "modela el backend de esto" o construya la capa de servidor. Paso de implementación en la cadena de construir web/app.
 source: wshobson/agents
 license: MIT
 ---

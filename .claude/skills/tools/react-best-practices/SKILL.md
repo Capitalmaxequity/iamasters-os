@@ -1,6 +1,6 @@
 ---
 name: react-best-practices
-description: React development guidelines with hooks, component patterns, state management, and performance optimization.
+description: Guías de desarrollo React/Next.js: hooks, patrones de componente, gestión de estado y optimización de rendimiento. Úsala cuando el operador diga o pida "buenas prácticas de React", "revisa mi componente React", "optimiza el rendimiento de esta app React", "cómo estructuro este hook/estado", "patrón correcto en Next.js" o construya/refactorice frontend React. Paso de implementación en la cadena de construir web/app.
 author: vercel
 category: development
 tags: [react, typescript, nextjs]

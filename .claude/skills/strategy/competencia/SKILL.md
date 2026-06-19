@@ -10,7 +10,7 @@ license: Complete terms in LICENSE.txt
 
 This skill provides a **modular, multi-step workflow** to perform advanced competitive analysis:
 
-* Analyzes **NotebookLM notebooks** for competitor insights using [Notebooklm-mcp](../Notebooklm-mcp/SKILL.md)
+* Analyzes **NotebookLM notebooks** for competitor insights using [notebooklm-mcp](../notebooklm-mcp/SKILL.md)
 * Performs **web intelligence** searches to capture reviews, pricing, and marketing data
 * Compares competitors’ features, UX/UI, retention, gamification, integrations
 * Generates structured **recommendations and opportunity reports** for your app
