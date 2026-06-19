@@ -145,13 +145,13 @@ Lo que aporta este repo encima de Sinapsis:
 
 ---
 
-## Skills registry (v0.10.0)
+## Skills registry (v0.11.0)
 
-Modelo **Core + Biblioteca**: 17 skills core siempre instaladas (el OS las necesita) + 21 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
+Modelo **Core + Biblioteca**: 27 skills core siempre instaladas (el OS las necesita) + 32 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
 
 **Routing por intencion (OBLIGATORIO — actívalo en CADA petición)**: antes de responder que no puedes hacer algo, o de resolverlo a mano, contrasta SIEMPRE la intención del operador contra la tabla de **Biblioteca** de abajo (la columna "Ofrécela cuando…" lista los disparadores de cada skill no instalada). Si una encaja, NO la ignores ni la resuelvas tú: ofrécela → "Eso lo hace la skill `<nombre>`. ¿La instalo?" → `bash scripts/skills.sh add <nombre>`. Las skills instaladas (sección Core) sí se cargan solas: invócalas directamente cuando la intención encaje, sin preguntar. Catálogo en vivo y fuente de verdad de descripciones: `bash scripts/skills.sh list`.
 
-### Core — siempre instaladas (17)
+### Core — siempre instaladas (27)
 
 #### `_meta/` — sistema (10)
 
@@ -180,7 +180,37 @@ Modelo **Core + Biblioteca**: 17 skills core siempre instaladas (el OS las neces
 | `tool-humanizer` | Quita patrones AI-tell |
 | `tool-output-verifier` | Gate de calidad |
 
-### Biblioteca — instalables con `/skills` (21)
+#### `marketing/` — core (2)
+
+| Skill | Descripción |
+|---|---|
+| `brand-guidelines` | Aplica colores y tipografía de marca a artefactos (consistencia visual) |
+| `competitive-ads-extractor` | Extrae y analiza anuncios de la competencia (mensajes, dolores, creatividades que funcionan) |
+
+#### `strategy/` — core (3)
+
+| Skill | Descripción |
+|---|---|
+| `competencia` | Inteligencia competitiva con NotebookLM + web (insights, oportunidades, fortalezas). Usa `Notebooklm-mcp` |
+| `Notebooklm-mcp` | Investigación fundamentada (grounded) sobre documentos vía NotebookLM MCP, con perfiles de tokens |
+| `startup-business-analyst` | Análisis de negocio para startups: TAM/SAM/SOM, modelo financiero, competitivo, planificación |
+
+#### `tools/` — core (4)
+
+| Skill | Descripción |
+|---|---|
+| `ask-questions-if-underspecified` | Hace las preguntas mínimas antes de construir cuando la petición llega ambigua |
+| `usability-retention-review` | Revisa usabilidad, navegación y retención de apps con honestidad brutal |
+| `react-best-practices` | Guías de React/Next.js: hooks, patrones de componente, estado, rendimiento |
+| `backend-development` | Diseño de APIs, esquemas de BBDD, microservicios y TDD |
+
+#### `visualization/` — core (1)
+
+| Skill | Descripción |
+|---|---|
+| `ui-ux-pro-max` | Inteligencia de diseño UI/UX (50 estilos, paletas, tipografías, 9 stacks): planear/construir/revisar UI |
+
+### Biblioteca — instalables con `/skills` (32)
 
 Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar: `bash scripts/skills.sh add <nombre>` · Quitar: `remove` · Catálogo: `list`.
 
@@ -193,22 +223,32 @@ Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar:
 | `marketing-email-sequence` | pida secuencias/automatizaciones de email: "secuencia de bienvenida", "nurture", "win-back", "drip", "qué emails enviar", "cadencia de emails", "embudo de emails" |
 | `marketing-meta-ads-analyzer` | quiera diagnosticar Meta Ads: "analiza mi campaña", "por qué no convierte", "CPA/ROAS/CPM/CTR", "revisa estas audiencias/creatividades", pegue datos o capturas de Meta |
 
-#### `strategy/` (6)
+#### `strategy/` (7)
 
 | Skill | Ofrécela cuando el operador… |
 |---|---|
 | `metodo-ias` | diga "método IAS", "planifica la sesión", "recap semanal", "me estoy quemando con la IA", "AI brain fry", "tomo demasiadas micro-decisiones", o quiera estructurar trabajo con IA sin saturarse |
+| `developer-growth-analysis` | diga "analiza mi historial de código", "en qué estoy fallando programando", "dónde puedo mejorar como dev", "detecta mis gaps técnicos", o quiera un informe de sus patrones de desarrollo |
 | `seis-sombreros` | pida "seis sombreros", "six hats", "ayúdame a pensar esto", "pros y contras en serio", "rompe el ancla", "análisis multi-perspectiva", o esté ante una decisión con sesgo de anclaje |
 | `cognito` | afronte decisiones con trade-offs, tensión emocional+técnica+estratégica, "¿debería hacer X?", análisis profundo o cambios de enfoque que pidan modos cognitivos explícitos |
 | `strategy-web-research` | pida búsqueda web **ligera y rápida**: "búscame", "investiga rápido", "compara X e Y", 3-5 fuentes, info actual acotada (no informe largo) |
 | `strategy-investigacion-profunda` | pida un **informe completo**: "investiga a fondo", "informe con fuentes", "triangula", "verifica con varias fuentes", "due diligence", "estado del arte" |
 | `strategy-stack-recommender` | pregunte "¿con qué construyo esto?", "¿qué stack me recomiendas?", "¿qué tecnologías uso para…?", o describa un proyecto y necesite orientación técnica antes de picar código |
 
-#### `tools/` (7)
+#### `tools/` (16)
 
 | Skill | Ofrécela cuando el operador… |
 |---|---|
 | `arnes` | diga "nuevo proyecto", "crea una app/web/landing", "arranca un proyecto", "adopta/renueva este proyecto", o quiera montar software paso a paso (Express/Estándar/PRO) |
+| `vercel-deploy` | diga "despliega esto en Vercel", "súbelo a Vercel", "pon esta web/app online en Vercel", o cierre un proyecto web listo para producción en Vercel (último paso de la cadena build) |
+| `obsidian-plugin` | diga "crea un plugin de Obsidian", "desarrolla algo para Obsidian", "extiende Obsidian", "plugin para mi bóveda de notas", o trabaje sobre la Obsidian API |
+| `video-downloader` | diga "descárgame este vídeo", "bájate este YouTube/Vimeo", "guarda este vídeo en local", "saca el audio de este vídeo", o pase una URL de vídeo para tenerla en disco |
+| `exploratory-data-analysis` | diga "saca insights de estos datos", "explora este dataset/CSV", "haz un EDA", "qué hay en estos datos", o pase un fichero de datos para entenderlo (primer paso del análisis) |
+| `statistical-analysis` | diga "qué test estadístico uso", "comprueba si esto es significativo", "potencia estadística", "compara estos grupos", o necesite elegir/justificar un test con sus supuestos |
+| `statsmodels` | necesite "regresión OLS/GLM", "ARIMA/series temporales", "modelos mixtos", "diagnósticos de residuos", econometría o inferencia con detalle (encaja con Polymarket) |
+| `scikit-learn` | diga "entréname un modelo", "clasificación/regresión", "clustering", "reducción de dimensionalidad", "pipeline de ML", o haga machine learning clásico en Python |
+| `pytorch-lightning` | diga "red neuronal", "deep learning", "entrenar un modelo en GPU", "LightningModule/Trainer", o monte un pipeline de DL organizado |
+| `shap` | diga "explica las predicciones del modelo", "importancia de variables", "por qué predice esto el modelo", "explicabilidad/interpretabilidad", "SHAP values" (encaja con honestidad-FVI) |
 | `tool-zoom-summary` | pida "resume esta reunión", "qué se dijo en la call", "recap de la reunión", "resumen zoom", "/zoom", o documente una clase/call recurrente |
 | `tool-seguridad-ia` | diga "revisa la seguridad de este código", "¿es seguro lo que ha escrito la IA?", "checklist antes de desplegar", o genere código sensible (credenciales, endpoints, BBDD) |
 | `tool-quality-gate` | diga "antes de desplegar", "voy a hacer push", "¿está listo para producción?", "valida esta app", o cierre un proyecto arnes |
@@ -224,11 +264,29 @@ Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar:
 | `automation-n8n-builder` | diga "créame un workflow en n8n", "monta esto en n8n", "automatiza X en n8n", o quiera construir/desplegar un flujo n8n vía MCP |
 | `automation-client-deploy` | diga "despliega esto al cliente", "llévalo al VPS/PC del cliente", "empaqueta y entrega", o tenga un proyecto local listo para producción en el entorno del cliente |
 
-#### `visualization/` (1)
+#### `visualization/` (2)
 
 | Skill | Ofrécela cuando el operador… |
 |---|---|
 | `tool-visual-explainer` | diga "hazme un HTML de esto", "ponlo bonito para compartir", "explícalo visual", "móntame una página que explique X", o necesite compartir un output complejo (diagrama, comparativa, recap) |
+| `theme-factory` | diga "dale estilo a esto", "aplica un tema", "ponlo bonito con una paleta", "elige fuentes y colores", "tema para esta presentación/landing", o necesite estilizar un artefacto de forma coherente |
+
+### Procesos encadenados (skills que se ofrecen seguidas)
+
+Algunas skills funcionan mejor en secuencia. Cuando cierres un paso, **ofrece el siguiente** de
+su cadena (instalándolo desde biblioteca si hace falta). No las encadenes en automático: ofrece
+y confirma.
+
+- **Construir web/app**: `ask-questions-if-underspecified` → `ui-ux-pro-max` → `theme-factory`
+  → `brand-guidelines` → `usability-retention-review` → `react-best-practices` /
+  `backend-development` → `vercel-deploy`. (Complementa a `arnes`, que orquesta el arranque.)
+- **Inteligencia competitiva**: `competitive-ads-extractor` + `competencia` (esta usa
+  `Notebooklm-mcp`) → `startup-business-analyst` → `investigacion-mercado` (skill global).
+- **Data/ML**: `exploratory-data-analysis` → `statistical-analysis` / `statsmodels` →
+  `scikit-learn` / `pytorch-lightning` → `shap` (explicabilidad). Aplica a FVI y Polymarket.
+- **Vídeo**: `video-downloader` → `tool-transcribe-social` (descarga y luego transcribe).
+
+Dependencia dura declarada: `competencia` → `Notebooklm-mcp` (ambas core, ya satisfecha).
 
 ### Plugins Anthropic (instalación vía marketplace)
 
