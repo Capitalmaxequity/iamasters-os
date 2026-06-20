@@ -147,7 +147,7 @@ Lo que aporta este repo encima de Sinapsis:
 
 ## Skills registry (v0.11.0)
 
-Modelo **Core + Biblioteca**: 27 skills core siempre instaladas (el OS las necesita) + 32 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
+Modelo **Core + Biblioteca**: 27 skills core siempre instaladas (el OS las necesita) + 33 en `skills-library/` que el operador instala a demanda con `/skills`. Cada skill instalada consume contexto en cada sesion (recomendacion Anthropic: <50 cargadas) — instala solo lo que uses.
 
 **Routing por intencion (OBLIGATORIO — actívalo en CADA petición)**: antes de responder que no puedes hacer algo, o de resolverlo a mano, contrasta SIEMPRE la intención del operador contra la tabla de **Biblioteca** de abajo (la columna "Ofrécela cuando…" lista los disparadores de cada skill no instalada). Si una encaja, NO la ignores ni la resuelvas tú: ofrécela → "Eso lo hace la skill `<nombre>`. ¿La instalo?" → `bash scripts/skills.sh add <nombre>`. Las skills instaladas (sección Core) sí se cargan solas: invócalas directamente cuando la intención encaje, sin preguntar. Catálogo en vivo y fuente de verdad de descripciones: `bash scripts/skills.sh list`.
 
@@ -210,7 +210,7 @@ Modelo **Core + Biblioteca**: 27 skills core siempre instaladas (el OS las neces
 |---|---|
 | `ui-ux-pro-max` | Inteligencia de diseño UI/UX (50 estilos, paletas, tipografías, 9 stacks): planear/construir/revisar UI |
 
-### Biblioteca — instalables con `/skills` (32)
+### Biblioteca — instalables con `/skills` (33)
 
 Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar: `bash scripts/skills.sh add <nombre>` · Quitar: `remove` · Catálogo: `list`.
 
@@ -235,7 +235,7 @@ Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar:
 | `strategy-investigacion-profunda` | pida un **informe completo**: "investiga a fondo", "informe con fuentes", "triangula", "verifica con varias fuentes", "due diligence", "estado del arte" |
 | `strategy-stack-recommender` | pregunte "¿con qué construyo esto?", "¿qué stack me recomiendas?", "¿qué tecnologías uso para…?", o describa un proyecto y necesite orientación técnica antes de picar código |
 
-#### `tools/` (16)
+#### `tools/` (17)
 
 | Skill | Ofrécela cuando el operador… |
 |---|---|
@@ -249,6 +249,7 @@ Viven en `skills-library/` (cero coste de contexto hasta instalarlas). Instalar:
 | `scikit-learn` | diga "entréname un modelo", "clasificación/regresión", "clustering", "reducción de dimensionalidad", "pipeline de ML", o haga machine learning clásico en Python |
 | `pytorch-lightning` | diga "red neuronal", "deep learning", "entrenar un modelo en GPU", "LightningModule/Trainer", o monte un pipeline de DL organizado |
 | `shap` | diga "explica las predicciones del modelo", "importancia de variables", "por qué predice esto el modelo", "explicabilidad/interpretabilidad", "SHAP values" (encaja con honestidad-FVI) |
+| `code-audit-integral` | diga "audita mi app/código a fondo", "revisión técnica completa", "¿está lista para producción?", "revisa seguridad/backend/rendimiento antes de lanzar", "auditoría integral", o cierre un desarrollo grande y quiera un informe priorizado P0/P1/P2 (13 fases modulares Sprint/Standard/Full; se adapta al stack) |
 | `tool-zoom-summary` | pida "resume esta reunión", "qué se dijo en la call", "recap de la reunión", "resumen zoom", "/zoom", o documente una clase/call recurrente |
 | `tool-seguridad-ia` | diga "revisa la seguridad de este código", "¿es seguro lo que ha escrito la IA?", "checklist antes de desplegar", o genere código sensible (credenciales, endpoints, BBDD) |
 | `tool-quality-gate` | diga "antes de desplegar", "voy a hacer push", "¿está listo para producción?", "valida esta app", o cierre un proyecto arnes |
@@ -285,6 +286,10 @@ y confirma.
 - **Data/ML**: `exploratory-data-analysis` → `statistical-analysis` / `statsmodels` →
   `scikit-learn` / `pytorch-lightning` → `shap` (explicabilidad). Aplica a FVI y Polymarket.
 - **Vídeo**: `video-downloader` → `tool-transcribe-social` (descarga y luego transcribe).
+- **Auditoría pre-producción**: `ask-questions-if-underspecified` → `ui-ux-pro-max` /
+  `usability-retention-review` (UX) → `code-audit-integral` (auditoría técnica 13 fases) →
+  `tool-quality-gate` / `tool-web-security-audit` / `tool-seguridad-ia` (gates) →
+  `vercel-deploy` / `automation-client-deploy` (deploy). Cierra la cadena de construir app.
 
 Dependencia dura declarada: `competencia` → `notebooklm-mcp` (ambas core, ya satisfecha).
 
