@@ -19,6 +19,11 @@
 
 set -e
 
+# PATH guard: en algunos arranques la shell hereda el PATH de Windows sin /usr/bin,
+# y entonces no encuentra find/grep/sed/awk (skills.sh peta con exit 127). Garantiza
+# que los coreutils de Git Bash estén disponibles. Idempotente.
+export PATH="/usr/bin:/bin:$PATH"
+
 GREEN='\033[0;32m'
 CYAN='\033[0;36m'
 YELLOW='\033[1;33m'
