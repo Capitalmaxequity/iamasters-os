@@ -31,6 +31,10 @@ jobs:
         shell: bash
         run: bash tests/test-security.sh
 
+      - name: Run observe is_error tests
+        shell: bash
+        run: bash tests/test-observe-iserror.sh
+
       - name: Run E2E dream tests
         shell: bash
         run: bash tests/test-e2e-dream.sh

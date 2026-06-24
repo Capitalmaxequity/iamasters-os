@@ -82,6 +82,8 @@ def main():
     session_id = data.get("session_id", "unknown")
 
     input_str = json.dumps(tool_input)[:5000] if isinstance(tool_input, dict) else str(tool_input)[:5000]
+    # Keep the original dict (if any) for structured failure detection; stringify only for storage/scrub.
+    tool_output_dict = tool_output if isinstance(tool_output, dict) else None
     output_str = json.dumps(tool_output)[:10000] if isinstance(tool_output, dict) else str(tool_output)[:10000]
 
     # Scrub secrets — 8 patterns (v4.3.3: added Stripe, Slack, SendGrid)
@@ -140,22 +142,111 @@ def main():
         observation["output"] = scrub(output_str)
         # Also capture input for tool_complete (enables full context analysis)
         observation["input"] = scrub(input_str)
-        # Flag errors — session-learner uses this to detect error→resolution patterns
-        # Use word boundaries to avoid false positives like "0 errors found"
-        error_patterns = [
+
+        # ── is_error detection (content-aware; replaces blind body scan) ──
+        # For content-returning tools output_str IS the file body/diff/matches, so
+        # keyword-scanning it yields ~95% false positives. Prefer STRUCTURED signals
+        # (content-independent, authoritative-if-present); fall back to a tool-aware
+        # text heuristic only for Bash, where failure must be inferred from stdout/stderr.
+
+        # Full keyword set — applied to stderr and structured messages only.
+        ERR_FULL = [
             r"\berror[:\s]", r"\bfailed\b", r"\bexception\b",
             r"\btraceback\b", r"\berrno\b", r"\bEPERM\b", r"\bENOENT\b",
             r"exit code [1-9]", r"command not found",
         ]
-        output_lower = output_str.lower()
-        if any(re.search(pat, output_lower) for pat in error_patterns):
+        # Tight allowlist — unambiguous execution-failure markers, safe for stdout.
+        ERR_TIGHT = [
+            r"command not found",
+            r"no such file or directory",
+            r"permission denied",
+            r"traceback \(most recent call last\):",
+            r"exit code [1-9]",
+            r": cannot ",
+            r"syntax error",
+        ]
+        # Content-returning tools: never scan the body; structured signal only.
+        CONTENT_TOOLS = {
+            "Read", "Edit", "Write", "Grep", "Glob",
+            "NotebookRead", "NotebookEdit", "MultiEdit",
+        }
+
+        def _scan(text, patterns):
+            """Return (matched_bool, first_matching_line_or_None). Never raises."""
+            if not text:
+                return False, None
+            try:
+                low = text.lower()
+                if not any(re.search(p, low) for p in patterns):
+                    return False, None
+                for line in text.split("\n"):
+                    ll = line.strip().lower()
+                    if any(re.search(p, ll) for p in patterns):
+                        return True, line.strip()
+                return True, text.strip().split("\n")[0]
+            except Exception:
+                return False, None
+
+        is_err = False
+        err_line = None
+
+        # (A) STRUCTURED signals — content-independent, authoritative if present,
+        #     harmless if absent (every access guarded).
+        try:
+            hook_name = data.get("hook_event_name", "") or ""
+            if isinstance(hook_name, str) and hook_name.endswith("Failure"):
+                is_err = True
+                err_line = "hook_event=" + hook_name
+            if not is_err and tool_output_dict is not None:
+                if tool_output_dict.get("type") == "error":
+                    is_err = True
+                    err_line = str(tool_output_dict.get("error")
+                                   or tool_output_dict.get("message")
+                                   or "tool_response.type=error")
+                elif tool_output_dict.get("is_error") is True:
+                    is_err = True
+                    err_line = str(tool_output_dict.get("error")
+                                   or tool_output_dict.get("message")
+                                   or "tool_response.is_error=true")
+                elif tool_output_dict.get("error"):
+                    is_err = True
+                    err_line = str(tool_output_dict.get("error"))
+            if not is_err and isinstance(data.get("error"), (str, dict)) and data.get("error"):
+                is_err = True
+                err_line = str(data.get("error"))
+        except Exception:
+            pass
+
+        # (B) Tool-specific text heuristic — only when no structured signal fired.
+        if not is_err:
+            if tool_name in CONTENT_TOOLS or (isinstance(tool_name, str) and tool_name.startswith("mcp__")):
+                pass  # Content & MCP tools: structured-only (already checked). No body scan.
+            elif tool_name == "Bash":
+                # tool_response = {stdout, stderr, interrupted, isImage, noOutputExpected}
+                src = tool_output_dict if tool_output_dict is not None else {}
+                if src.get("interrupted") is True:
+                    is_err = True
+                    err_line = "Bash interrupted"
+                if not is_err:
+                    m, line = _scan(str(src.get("stderr") or ""), ERR_FULL)
+                    if m:
+                        is_err, err_line = True, line
+                if not is_err:
+                    # stdout: tight allowlist ONLY (non-zero exits dump failure text to stdout).
+                    m, line = _scan(str(src.get("stdout") or ""), ERR_TIGHT)
+                    if m:
+                        is_err, err_line = True, line
+            else:
+                # Unknown/other tools: conservative — TIGHT allowlist on stringified output,
+                # never the broad set (that's the original false-positive class).
+                m, line = _scan(output_str, ERR_TIGHT)
+                if m:
+                    is_err, err_line = True, line
+
+        if is_err:
             observation["is_error"] = True
-            # Extract first error line for downstream analysis
-            for line in output_str.split('\n'):
-                line_lower = line.strip().lower()
-                if any(re.search(pat, line_lower) for pat in error_patterns):
-                    observation["err_msg"] = scrub(line.strip()[:500])
-                    break
+            if err_line:
+                observation["err_msg"] = scrub(err_line[:500])
 
     obs_file = os.path.join(project_dir, "observations.jsonl")
 
