@@ -116,3 +116,7 @@ yarn.lock
 
 # Personalizaciones del operador sobre skills curadas — sobreviven updates
 **/SKILL.local.md
+
+# Scratch artifacts (playwright MCP logs, ad-hoc screenshots)
+.playwright-mcp/
+p0-default.png
