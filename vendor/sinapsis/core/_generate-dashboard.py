@@ -141,8 +141,25 @@ def collect_skills():
 
 
 def collect_projects():
-    proj = load_json(SKILLS / '_sinapsis-projects.json', {'projects': []})
-    active = [p for p in proj.get('projects', []) if p.get('active')]
+    # Canonical registry first (written by _session-learner.sh JOB 1.5), then
+    # fall back to the legacy _projects.json (older learner schema, same shape).
+    proj = load_json(SKILLS / '_sinapsis-projects.json', None)
+    if not isinstance(proj, dict) or not proj.get('projects'):
+        proj = load_json(SKILLS / '_projects.json', {'projects': []})
+    registry = proj.get('projects', []) if isinstance(proj, dict) else []
+    # A project counts as active if it carries an explicit `active` flag — or,
+    # since neither registry schema sets one, if it was seen in the last 30 days.
+    now = now_utc()
+    active = []
+    for p in registry:
+        if not isinstance(p, dict):
+            continue
+        if p.get('active'):
+            active.append(p)
+            continue
+        seen = parse_iso(p.get('last_seen'))
+        if seen and days_ago(seen, now) is not None and (now - seen).days <= 30:
+            active.append(p)
     total_obs = 0
     proj_obs = []
     if HOMUNCULUS.exists():
@@ -172,7 +189,15 @@ def collect_projects():
 
 def collect_decisions():
     op = load_json(SKILLS / '_operator-state.json', {})
-    decs = op.get('strategicDecisions', [])
+    raw = op.get('strategicDecisions', [])
+    # Tolerate both shapes: list of dicts {id,date,decision} or list of strings.
+    decs = []
+    for d in raw:
+        if isinstance(d, dict):
+            decs.append(d)
+        elif isinstance(d, str):
+            m = re.search(r'\((\d{4}-\d{2}-\d{2})', d)
+            decs.append({'id': None, 'date': m.group(1) if m else '', 'decision': d})
     decs.sort(key=lambda d: d.get('date', ''), reverse=True)
     return decs
 

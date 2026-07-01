@@ -20,11 +20,16 @@ Incluye 8 KPIs, velocity, timings por hora del día, maduración de instincts, h
 
 ### Step 1: Execute the generator
 
-Run the Python script directly (not via LLM reasoning — es determinista):
+Run the Python script directly (not via LLM reasoning — es determinista). El
+generador vive instalado en `~/.claude/skills/` (lo copia el installer) y es
+portable — resuelve `~/.claude` desde `$HOME`, sin rutas absolutas:
 
 ```bash
-python C:/Users/luis/.claude/skills/norteia-continuous-learning/hooks/generate-dashboard.py
+python ~/.claude/skills/_generate-dashboard.py
 ```
+
+Si por lo que sea no está instalado ahí, ejecútalo desde el vendor del repo
+(misma lógica, misma salida): `python vendor/sinapsis/core/_generate-dashboard.py`.
 
 El script lee en paralelo:
 - `_instincts-index.json`
@@ -42,21 +47,23 @@ Y escribe `~/.claude/skills/_dashboard.html` autocontenido (Chart.js + Google Fo
 Tras ejecutar el script, muestra al usuario:
 
 ```
-Dashboard regenerado: C:/Users/luis/.claude/skills/_dashboard.html
+Dashboard regenerado: ~/.claude/skills/_dashboard.html
 
 Acceso:
   · Preview server (si está arrancado): http://localhost:8080/_dashboard.html
-  · Directamente:                       file:///C:/Users/luis/.claude/skills/_dashboard.html
+  · Directamente:                       file:///<HOME>/.claude/skills/_dashboard.html
 
 Próxima regeneración automática: diaria por sinapsis-linting
 ```
+
+(El script imprime la ruta `file:///…` absoluta y resuelta al terminar — cópiala de su salida.)
 
 Si el preview server de `.claude/launch.json` (name=`dashboard-static`) está activo, basta con navegar a la URL.
 Si no está activo, ofrece arrancarlo con `preview_start` del MCP Claude_Preview (solo si el usuario lo pide).
 
 ### Step 3: Handle errors
 
-- Si falla el Python con "template not found": el template está en `hooks/dashboard-template.html` — verificar que existe.
+- Si falla el Python con "template not found": el template es `_dashboard-template.html`, hermano del generador (en `~/.claude/skills/` si está instalado, o en `vendor/sinapsis/core/` en el repo) — verificar que existe.
 - Si falla por fichero JSON corrupto: el script ya gestiona `default` en `load_json`, seguirá con ceros.
 - Si no hay `_instinct.log`: el heatmap y hour-distribution estarán a cero, el resto del dashboard funciona.
 

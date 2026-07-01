@@ -632,6 +632,24 @@ EOF
         ok ".env creado desde .env.example"
     fi
 
+    # Refrescar el plumbing del dashboard de Sinapsis (generador + plantilla +
+    # comando). vendor/sinapsis/install.sh los copia solo en instalación fresca;
+    # si sinapsis-engine ya está `done`, no se vuelven a tocar y las copias
+    # instaladas se quedan viejas (bug del dashboard). Lo hacemos idempotente
+    # aquí, en cada run, para que /dashboard-sinapsis y sinapsis-linting usen
+    # siempre la versión vendored vigente.
+    if [ -f "$SINAPSIS_VENDOR/core/_generate-dashboard.py" ]; then
+        cp "$SINAPSIS_VENDOR/core/_generate-dashboard.py" "$SKILLS_DIR/_generate-dashboard.py"
+        chmod +x "$SKILLS_DIR/_generate-dashboard.py" 2>/dev/null || true
+        [ -f "$SINAPSIS_VENDOR/core/_dashboard-template.html" ] && \
+            cp "$SINAPSIS_VENDOR/core/_dashboard-template.html" "$SKILLS_DIR/_dashboard-template.html"
+        [ -f "$SINAPSIS_VENDOR/commands/dashboard-sinapsis.md" ] && \
+            cp "$SINAPSIS_VENDOR/commands/dashboard-sinapsis.md" "$CLAUDE_HOME/commands/dashboard-sinapsis.md" 2>/dev/null || true
+        ok "Dashboard de Sinapsis refrescado (generador + plantilla + comando)"
+    else
+        warn "vendor/sinapsis/core/_generate-dashboard.py no encontrado · /dashboard-sinapsis usará la copia instalada (puede estar vieja)"
+    fi
+
     # Instalar hook _install-gate.sh en SKILLS_DIR (es el gate de SessionStart)
     if [ -f "$SCRIPT_DIR/_install-gate.sh" ]; then
         cp "$SCRIPT_DIR/_install-gate.sh" "$SKILLS_DIR/_install-gate.sh"
